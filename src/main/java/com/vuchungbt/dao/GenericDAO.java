@@ -11,4 +11,5 @@ public interface GenericDAO<T>{
     Long       insert(String sql, Object... param);
     void       delete(String sql, Object... param);
     int         count(String sql, Object... param);
+
 }
