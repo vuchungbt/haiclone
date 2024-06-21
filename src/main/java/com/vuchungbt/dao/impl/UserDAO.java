@@ -12,8 +12,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         StringBuilder sql = new StringBuilder("SELECT * FROM users AS u");
         sql.append(" INNER JOIN roles AS r ON r.id = u.roleid");
         sql.append(" WHERE fbID = ?");
-        List<UserModel> users = query(sql.toString(), new UserMapper(), fbID);
-        return users.isEmpty() ? null : users.get(0);
+        return findOne(sql.toString(), new UserMapper(), fbID);
     }
 
     @Override
@@ -21,8 +20,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         StringBuilder sql = new StringBuilder("SELECT * FROM users AS u");
         sql.append(" INNER JOIN roles AS r ON r.id = u.roleid");
         sql.append(" WHERE ggID = ?");
-        List<UserModel> users = query(sql.toString(), new UserMapper(), ggID);
-        return users.isEmpty() ? null : users.get(0);
+        return findOne(sql.toString(), new UserMapper(), ggID);
     }
 
     @Override
@@ -30,8 +28,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         StringBuilder sql = new StringBuilder("SELECT * FROM users AS u");
         sql.append(" INNER JOIN roles AS r ON r.id = u.roleid");
         sql.append(" WHERE id = ?");
-        List<UserModel> users = query(sql.toString(), new UserMapper(), id);
-        return users.isEmpty() ? null : users.get(0);
+        return findOne(sql.toString(), new UserMapper(), id);
     }
 
     @Override
@@ -39,7 +36,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         StringBuilder sql = new StringBuilder("SELECT * FROM users AS u");
         sql.append(" INNER JOIN roles AS r ON r.id = u.roleid");
         sql.append(" WHERE email = ?");
-        List<UserModel> users = query(sql.toString(), new UserMapper(), email);
-        return users.isEmpty() ? null : users.get(0);
+        return findOne(sql.toString(), new UserMapper(), email);
     }
+
 }
