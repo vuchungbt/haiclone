@@ -1,12 +1,13 @@
 package com.vuchungbt.service.impl;
 
+import com.vuchungbt.dao.IUserDAO;
 import com.vuchungbt.dao.impl.UserDAO;
 import com.vuchungbt.model.UserModel;
 import com.vuchungbt.service.IUserService;
 
 public class UserService implements IUserService {
 
-    private UserDAO userDAO;
+    private IUserDAO userDAO;
     public UserService() {
         userDAO= new UserDAO();
     }
