@@ -6,6 +6,15 @@ import java.sql.Timestamp;
 public class UserModel extends AbstractModel {
     private String avatar,pagePhoto,fbID,ggID,email,tel;
     private Timestamp lastOnline;
+    private Long roleId;
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 
     public String getEmail() {
         return email;
@@ -61,5 +70,16 @@ public class UserModel extends AbstractModel {
 
     public void setLastOnline(Timestamp lastOnline) {
         this.lastOnline = lastOnline;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "FbID='" + fbID + '\'' +
+                "GgID='" + ggID + '\'' +
+                ", name='" + getName() + '\'' +
+                ", email='" + email + '\'' +
+                ", thumbnail='" + getThumbnail() + '\'' +
+                '}';
     }
 }

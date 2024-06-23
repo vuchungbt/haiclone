@@ -11,17 +11,17 @@ import java.util.ResourceBundle;
 public class AbstractDAO<T> implements GenericDAO<T> {
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
-    public Connection getConnection(){
 
-        try{
+    public Connection getConnection() {
+
+        try {
             Class.forName(resourceBundle.getString("driverName"));
             String url = resourceBundle.getString("url");
             String user = resourceBundle.getString("user");
             String password = resourceBundle.getString("password");
             return DriverManager.getConnection(url, user, password);
-        }
-        catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Connect error:"+e.getMessage());
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Connect error:" + e.getMessage());
             return null;
         }
     }
@@ -39,6 +39,8 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                     statement.setInt(index, (Integer) parameter);
                 } else if (parameter instanceof Timestamp) {
                     statement.setTimestamp(index, (Timestamp) parameter);
+                }else if(parameter == null) {
+                    statement.setNull(i+1, Types.NULL);
                 }
             }
         } catch (SQLException e) {
@@ -61,17 +63,16 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                 results.add(rowMapper.mapRow(resultSet));
             }
             return results;
-        }
-         catch (SQLException e) {
-             System.out.println("ResultSet UserModel error:"+e.getMessage());
-             return null;
+        } catch (SQLException e) {
+            System.out.println("ResultSet UserModel error:" + e.getMessage());
+            return null;
             //throw new RuntimeException(e);
 
         }
     }
 
     @Override
-    public void update(String sql,  Object... param) {
+    public void update(String sql, Object... param) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -104,7 +105,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     }
 
     @Override
-    public Long insert(String sql,  Object... param) {
+    public Long insert(String sql, Object... param) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -148,8 +149,8 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     }
 
     @Override
-    public void delete(String sql,  Object... param) {
-        this.update(sql,param);
+    public void delete(String sql, Object... param) {
+        this.update(sql, param);
     }
 
     @Override
@@ -186,5 +187,43 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         }
     }
 
+    @Override
+    public <T> T findOne(String sql, RowMapper<T> rowMapper, Object... param) {
+        List<T> results = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = getConnection();
+            statement = connection.prepareStatement(sql);
+            setParameter(statement, param);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                return rowMapper.mapRow(resultSet);
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("ResultSet error:" + e.getMessage());
+            return null;
 
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                return null;
+            }
+
+
+        }
+
+
+    }
 }
