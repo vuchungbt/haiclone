@@ -16,79 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/login1"})
+@WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-
     @Inject
     private IUserService userService;
-//    private UserService userService = new UserService();
-    private UserService us = new UserService();
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException{
-//
-//        String code = request.getParameter("code");
-//        String provider = request.getParameter("provider");
-//        if(code!=null){
-//            if(provider.equals("google")){
-//                GoogleLogin gg = new GoogleLogin();
-//                String accessToken = gg.getToken(code);
-//                System.out.println(accessToken);
-//                UserModel acc = gg.getUserInfo(accessToken);
-//                System.out.println(acc);
-//            }else{
-//                FacebookLogin fb = new FacebookLogin();
-//                String accessToken = fb.getToken(code);
-//                UserModel acc = fb.getUserInfo(accessToken);
-//                if(acc!= null){
-////                    userService.save(acc);
-//                    System.out.println(acc);
-//                }else{
-//                    System.out.println("Không lấy được thông tin tài khoản từ Facebook");
-//                }
-//            }
-//
-//        }else{
-//            RequestDispatcher rd =request.getRequestDispatcher("/views/login.jsp");
-//            rd.forward(request, response);
-//        }
-//    }
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-    String code = request.getParameter("code");
-    String state = request.getParameter("state");
-    if (code != null) {
-        if (state != null) {
-            if (state.equals("google")) {
-                GoogleLogin gg = new GoogleLogin();
-                String accessToken = gg.getToken(code);
-                System.out.println(accessToken);
-                UserModel acc = gg.getUserInfo(accessToken);
-                System.out.println(acc);
-                userService.save(acc);
-            } else if (state.equals("facebook")) {
-                FacebookLogin fb = new FacebookLogin();
-                String accessToken = fb.getToken(code);
-                UserModel acc = fb.getUserInfo(accessToken);
-                if (acc != null) {
-                     userService.save(acc);
-                    System.out.println(acc);
-                } else {
-                    System.out.println("Không lấy được thông tin tài khoản từ Facebook");
-                }
-            } else {
-                System.out.println("Unknown provider: " + state);
-            }
-        } else {
-            System.out.println("Provider is null");
-        }
-    } else {
-        RequestDispatcher rd = request.getRequestDispatcher("/views/login.jsp");
-        rd.forward(request, response);
+
     }
-}
-
-
 }

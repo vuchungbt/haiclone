@@ -10,7 +10,8 @@ import com.auth0.jwt.JWTCreator.Builder;
 import java.util.ResourceBundle;
 
 public class JWTUtil {
-    private static final String SECRET = ResourceBundle.getBundle("secret").getString("secret");
+//    private static final String SECRET = ResourceBundle.getBundle("secret").getString("secret");
+    private static final String SECRET = "1234";
     public static String generateToken(UserModel user){
         Algorithm algorithm = Algorithm.HMAC384(SECRET);
         Builder builderToken = JWT.create()
