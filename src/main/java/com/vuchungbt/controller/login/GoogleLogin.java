@@ -36,9 +36,7 @@ public class GoogleLogin {
         UserModel ggAccount = new UserModel();
         ggAccount.setGgID(object.get("id").getAsString());
         ggAccount.setName(object.get("name").getAsString());
-        if(object.has("email")){
-            ggAccount.setEmail((object.get("email").getAsString()));
-        }
+        ggAccount.setEmail((object.get("email").getAsString()));
 //        if(object.has("picture")){
 //            JsonObject picObject = object.getAsJsonObject("picture")
 //                    .getAsJsonObject("data");
