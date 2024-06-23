@@ -1,7 +1,6 @@
 package com.vuchungbt.dao.impl;
 
 import com.vuchungbt.dao.IUserDAO;
-import com.vuchungbt.mapper.RowMapper;
 import com.vuchungbt.mapper.UserMapper;
 import com.vuchungbt.model.UserModel;
 

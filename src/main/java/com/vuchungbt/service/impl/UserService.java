@@ -5,6 +5,7 @@ import com.vuchungbt.model.UserModel;
 import com.vuchungbt.service.IUserService;
 
 import javax.inject.Inject;
+
 public class UserService implements IUserService {
 
     @Inject
