@@ -4,8 +4,12 @@ import com.vuchungbt.dao.IUserDAO;
 import com.vuchungbt.mapper.UserMapper;
 import com.vuchungbt.model.UserModel;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import java.util.List;
 
+@Named
+@RequestScoped
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public UserModel findByFbID(String fbID ) {
@@ -41,5 +45,13 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         sql.append(" WHERE email = ?");
         List<UserModel> users = query(sql.toString(), new UserMapper(), email);
         return users.isEmpty() ? null : users.get(0);
+    }
+
+    @Override
+    public Long save(UserModel userModel) {
+        StringBuilder sql = new StringBuilder("INSERT INTO users(fbID,ggID,name,thumbnail,email)");
+        sql.append(" values(?,?,?,?,?)");
+        return insert(sql.toString(),userModel.getFbID(), userModel.getGgID(),userModel.getName()
+                ,userModel.getThumbnail(),userModel.getEmail());
     }
 }

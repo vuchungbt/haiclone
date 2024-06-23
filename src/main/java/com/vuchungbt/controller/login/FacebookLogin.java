@@ -1,9 +1,9 @@
-package com.vuchungbt.controller.web;
+package com.vuchungbt.controller.login;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.vuchungbt.constant.IConstant;
-import com.vuchungbt.model.Account;
+import com.vuchungbt.model.UserModel;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -25,12 +25,12 @@ public class FacebookLogin {
             JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
             return jobj.get("access_token").toString().replaceAll("\"", "");
     }
-    public static Account getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+    public static UserModel getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
         String link = IConstant.FACEBOOK_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
         JsonObject object = new Gson().fromJson(response , JsonObject.class);
-        Account fbAccount = new Account();
-        fbAccount.setId(object.get("id").getAsString());
+        UserModel fbAccount = new UserModel();
+        fbAccount.setFbID(object.get("id").getAsString());
         fbAccount.setName(object.get("name").getAsString());
         if(object.has("email")){
             fbAccount.setEmail((object.get("email").getAsString()));
@@ -38,7 +38,7 @@ public class FacebookLogin {
         if(object.has("picture")){
             JsonObject picObject = object.getAsJsonObject("picture")
                     .getAsJsonObject("data");
-            fbAccount.setPictureUrl(picObject.get("url").getAsString());
+            fbAccount.setThumbnail(picObject.get("url").getAsString());
         }
         return fbAccount;
     }

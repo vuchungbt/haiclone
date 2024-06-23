@@ -62,4 +62,15 @@ public class UserModel extends AbstractModel {
     public void setLastOnline(Timestamp lastOnline) {
         this.lastOnline = lastOnline;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "FbID='" + fbID + '\'' +
+                "GgID='" + ggID + '\'' +
+                ", name='" + getName() + '\'' +
+                ", email='" + email + '\'' +
+                ", thumbnail='" + getThumbnail() + '\'' +
+                '}';
+    }
 }
