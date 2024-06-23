@@ -17,16 +17,17 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setFbID(rs.getString("fbID"));
             user.setLastOnline(rs.getTimestamp("lastOnline"));
             user.setPagePhoto(rs.getString("pagePhoto"));
-            user.setCreatedBy(rs.getString("createdBy"));
-            user.setCreatedDate(rs.getTimestamp("createdDate"));
+            user.setCreatedBy(rs.getString("createdby"));
+            user.setCreatedDate(rs.getTimestamp("createddate"));
             user.setDescription(rs.getString("description"));
             user.setStatus(rs.getInt("status"));
             user.setName(rs.getString("name"));
             user.setThumbnail(rs.getString("thumbnail"));
             user.setTitle(rs.getString("title"));
+            user.setTitle(rs.getString("tel"));
             user.setType(rs.getString("type"));
-            user.setModifiedBy(rs.getString("modifiedBy"));
-            user.setModifiedDate(rs.getTimestamp("modifiedDate"));
+            user.setModifiedBy(rs.getString("modifiedby"));
+            user.setModifiedDate(rs.getTimestamp("modifieddate"));
         }
          catch (SQLException e) {
              System.out.println("ResultSet UserModel error:"+e.getMessage());

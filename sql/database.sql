@@ -15,7 +15,7 @@ CREATE TABLE `users` (
   status int NOT NULL,
   roleid bigint NOT NULL,
   CONSTRAINT pk_user_role FOREIGN KEY (roleid) REFERENCES roles(id),
-  createdDate TIMESTAMP NULL,
+  createddate TIMESTAMP NULL,
   modifieddate TIMESTAMP NULL,
   createdby VARCHAR(255) NULL,
   modifiedby VARCHAR(255) NULL,
@@ -27,4 +27,21 @@ CREATE TABLE `users` (
   pagePhoto VARCHAR(255) NULL,
   avatar VARCHAR(255) NULL,
   email VARCHAR(100) NULL
-)
+);
+CREATE TABLE `posts`(
+  id bigint NOT NULL PRIMARY KEY auto_increment,
+  createddate TIMESTAMP NULL,
+    modifieddate TIMESTAMP NULL,
+    createdby VARCHAR(255) NULL,
+    modifiedby VARCHAR(255) NULL,
+    type VARCHAR(60) NULL,
+    name VARCHAR(60) NULL,
+    thumbnail VARCHAR(255) NULL,
+    source VARCHAR(255) NULL,
+    refer VARCHAR(255) NULL,
+    title VARCHAR(255) NULL,
+    description TEXT NULL,
+    shortdescription TEXT NULL,
+    content TEXT NULL,
+    status int NOT NULL,
+);

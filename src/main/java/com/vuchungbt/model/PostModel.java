@@ -5,7 +5,23 @@ import java.util.List;
 
 public class PostModel extends AbstractModel {
     private List<String> tab = new ArrayList<>();
-    private String source,refer;
+    private String source,refer,shortdescription,content;
+
+    public String getShortdescription() {
+        return shortdescription;
+    }
+
+    public void setShortdescription(String shortdescription) {
+        this.shortdescription = shortdescription;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public List<String> getTab() {
         return tab;

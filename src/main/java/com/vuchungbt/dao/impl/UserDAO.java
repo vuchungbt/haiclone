@@ -1,12 +1,8 @@
 package com.vuchungbt.dao.impl;
 
 import com.vuchungbt.dao.IUserDAO;
-import com.vuchungbt.mapper.RowMapper;
 import com.vuchungbt.mapper.UserMapper;
 import com.vuchungbt.model.UserModel;
-
-import java.util.Collections;
-import java.util.List;
 
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
@@ -26,7 +22,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     }
 
     @Override
-    public UserModel findByID(String id) {
+    public UserModel findByID(Long id) {
         StringBuilder sql = new StringBuilder("SELECT * FROM users AS u");
         sql.append(" INNER JOIN roles AS r ON r.id = u.roleid");
         sql.append(" WHERE id = ?");
@@ -45,7 +41,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     public void update(UserModel newUser) {
         StringBuilder sql = new StringBuilder("UPDATE users SET avatar=?,");
         sql.append(" createdby=?,");
-        sql.append(" createdDate=?,");
+        sql.append(" createddate=?,");
         sql.append(" description=?,");
         sql.append(" email=?,");
         sql.append(" fbID=?,");
@@ -64,7 +60,8 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         sql.append(" WHERE id = ?");
         update(sql.toString(),newUser.getAvatar(),newUser.getCreatedBy(),newUser.getCreatedDate(),newUser.getDescription(),
                 newUser.getEmail(),newUser.getFbID(),newUser.getGgID(),newUser.getLastOnline(),newUser.getModifiedBy(),newUser.getModifiedDate(),
-                newUser.getName(),newUser.getPagePhoto(),newUser.getRoleId(),newUser.getStatus(),newUser.getThumbnail(),newUser.getTitle(),newUser.getTel(),newUser.getType());
+                newUser.getName(),newUser.getPagePhoto(),newUser.getRoleId(),newUser.getStatus(),newUser.getThumbnail(),newUser.getTitle(),newUser.getTel(),newUser.getType(),
+                newUser.getId());
     }
 
     @Override
@@ -76,7 +73,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public Long save(UserModel userModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO users ");
-        sql.append(" (name,fbID ,ggID ,tel, status ,roleid,createdDate,createdby,type,title,thumbnail,description,pagePhoto,avatar,email)");
+        sql.append(" (name,fbID ,ggID ,tel, status ,roleid,createddate,createdby,type,title,thumbnail,description,pagePhoto,avatar,email)");
         sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)");
         return insert(sql.toString(),userModel.getName(),userModel.getFbID(),userModel.getGgID(),userModel.getTel(),userModel.getStatus(),userModel.getRoleId(),userModel.getCreatedDate(),
                 userModel.getCreatedBy(),userModel.getType(),userModel.getTitle(),userModel.getTitle(),userModel.getThumbnail(),userModel.getDescription(),userModel.getPagePhoto(),
@@ -88,16 +85,6 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     public int count() {
         String sql = "SELECT count(*) FROM users";
         return count(sql);
-    }
-
-    @Override
-    public List<UserModel> findByRoleID(Long id) {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public List<UserModel> findByRoleCode(String code) {
-        return Collections.emptyList();
     }
 
 
