@@ -1,14 +1,14 @@
-package com.vuchungbt.dao;
+package com.vuchungbt.service;
 
 import com.vuchungbt.model.PostModel;
 
 import java.util.List;
 
-public interface IPostDAO extends GenericDAO<PostModel>{
+public interface IPostService {
     PostModel findByID(Long id);
-    void update(PostModel newPost);
+    PostModel save(PostModel postModel);
+    PostModel update(PostModel postModel);
     void delete(long id);
-    Long save(PostModel postModel);
     int count();
     List<PostModel> findAll();
     List<PostModel> findAll(int page);

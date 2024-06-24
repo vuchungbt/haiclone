@@ -11,8 +11,8 @@ import java.util.List;
 public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
 
     @Override
-    public PostModel findByID(String id) {
-        StringBuilder sql = new StringBuilder("SELECT * FROM posts AS p");
+    public PostModel findByID(Long id) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM posts");
         sql.append(" WHERE id = ?");
         return findOne(sql.toString(), new PostMapper(), id);
     }
@@ -64,12 +64,16 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
 
     @Override
     public List<PostModel> findAll() {
-        return Collections.emptyList();
+        String sql = "SELECT * FROM posts";
+        return query(sql,new PostMapper());
     }
 
     @Override
     public List<PostModel> findAll(int page) {
-        return Collections.emptyList();
+        String sql = "SELECT * FROM posts ";
+        int record = 10;
+        sql+=" LIMIT "+ record + " OFFSET " + (page-1)*record ;
+        return query(sql,new PostMapper());
     }
 
 }
