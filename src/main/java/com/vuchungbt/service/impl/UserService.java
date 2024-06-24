@@ -1,13 +1,11 @@
 package com.vuchungbt.service.impl;
 
 import com.vuchungbt.dao.IUserDAO;
-import com.vuchungbt.dao.impl.UserDAO;
 import com.vuchungbt.model.UserModel;
 import com.vuchungbt.service.IUserService;
 
 import javax.inject.Inject;
 import java.sql.Timestamp;
-
 public class UserService implements IUserService {
 
     @Inject

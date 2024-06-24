@@ -3,7 +3,10 @@ package com.vuchungbt.dao.impl;
 import com.vuchungbt.dao.IUserDAO;
 import com.vuchungbt.mapper.UserMapper;
 import com.vuchungbt.model.UserModel;
-
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+@Named
+@RequestScoped
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public UserModel findByFbID(String fbID ) {
@@ -86,6 +89,15 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         String sql = "SELECT count(*) FROM users";
         return count(sql);
     }
-
+    
+//    @Override
+//    public List<UserModel> findByRoleID(Long id) {
+//        return Collections.emptyList();
+//    }
+//
+//    @Override
+//    public List<UserModel> findByRoleCode(String code) {
+//        return Collections.emptyList();
+//    }
 
 }
