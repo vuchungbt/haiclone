@@ -11,17 +11,24 @@ import org.apache.http.client.fluent.Request;
 import java.io.IOException;
 
 public class FacebookLogin {
-    public static String getToken(String code) throws ClientProtocolException, IOException {
-        String response = Request.Post(IConstant.FACEBOOK_LINK_GET_TOKEN)
-                .bodyForm(
+    public static String getToken(String code) {
+        String response =null;
+        try {
+            response= Request.Post(IConstant.FACEBOOK_LINK_GET_TOKEN)
+                    .bodyForm(
                             Form.form()
                                     .add("client_id", IConstant.FACEBOOK_CLIENT_ID)
                                     .add("client_secret", IConstant.FACEBOOK_CLIENT_SECRET)
                                     .add("redirect_uri", IConstant.FACEBOOK_REDIRECT_URI)
                                     .add("code", code)
                                     .build()
-                )
-                .execute().returnContent().asString();
+                    )
+                    .execute().returnContent().asString();
+        }
+        catch (IOException e ) {
+            System.out.println(">>>"+e.getMessage());
+        }
+
             JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
             return jobj.get("access_token").toString().replaceAll("\"", "");
     }
