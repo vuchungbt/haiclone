@@ -2,12 +2,13 @@ package com.vuchungbt.controller.login;
 
 import com.vuchungbt.model.UserModel;
 import com.vuchungbt.service.IUserService;
-import com.vuchungbt.service.impl.UserService;
+import com.vuchungbt.utils.JWTUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,13 +24,14 @@ public class LoginController extends HttpServlet {
 
         String code = request.getParameter("code");
         String state = request.getParameter("state");
+        String path="";
         if (code != null) {
             if (state != null) {
                 UserModel acc= null;
                 if (state.equals("google")) {
                     GoogleLogin gg = new GoogleLogin();
                     String accessToken = gg.getToken(code);
-                     acc = gg.getUserInfo(accessToken);
+                    acc = gg.getUserInfo(accessToken);
                 } else if (state.equals("facebook")) {
                     FacebookLogin fb = new FacebookLogin();
                     String accessToken = fb.getToken(code);
@@ -37,22 +39,27 @@ public class LoginController extends HttpServlet {
                 } else {
                     System.out.println("Unknown provider: " + state);
                 }
-
                 if(acc!=null){
-                    userService.save(acc);
+                    handleUserLogin(acc,state,request,response);
+                    return;
+
                 }else{
-                    System.out.println("Không lấy được thông tin tài khoản");
+                    request.setAttribute("status", 401);
+                    request.setAttribute("msg", "User does not exists");
+                    path = "/views/login.jsp";
                 }
             } else {
                 System.out.println("Sate is null");
+                path = "/views/login.jsp";
             }
         } else {
-            RequestDispatcher rd = request.getRequestDispatcher("/views/login.jsp");
-            rd.forward(request, response);
+            path = "/views/login.jsp";
         }
+        RequestDispatcher rd = request.getRequestDispatcher(path);
+        rd.forward(request,response);
     }
     public void handleUserLogin(UserModel userModel, String state, HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException{
+            throws ServletException, IOException{
         UserModel existingUser = null;
         if(state.equals("google")){
             existingUser=userService.findByGgID(userModel.getGgID());
@@ -62,8 +69,13 @@ public class LoginController extends HttpServlet {
         if (existingUser == null) {
             userService.save(userModel);
         }
-        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+        String jwtToken = JWTUtil.generateToken(userModel);
+        Cookie cookie = new Cookie("token",jwtToken);
+        response.addCookie(cookie);
+        request.setAttribute("token",jwtToken);
+        request.setAttribute("status",200);
+        request.setAttribute("user", userModel);
+        RequestDispatcher rd = request.getRequestDispatcher("/views/login.jsp");
         rd.forward(request,response);
-
     }
 }
