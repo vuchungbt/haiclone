@@ -20,15 +20,15 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
     @Override
     public void update(PostModel newPost) {
         StringBuilder sql = new StringBuilder("UPDATE posts SET name=?,");
-        sql.append(" createdby=?,");
-        sql.append(" createddate=?,");
+        sql.append(" created_by=?,");
+        sql.append(" created_date=?,");
         sql.append(" description=?,");
-        sql.append(" shortdescription=?,");
+        sql.append(" short_description=?,");
         sql.append(" content=?,");
         sql.append(" refer=?,");
         sql.append(" source=?,");
-        sql.append(" modifiedby=?,");
-        sql.append(" modifieddate=?,");
+        sql.append(" modified_by=?,");
+        sql.append(" modified_date=?,");
         sql.append(" status=?,");
         sql.append(" thumbnail=?,");
         sql.append(" title=?,");
@@ -48,7 +48,7 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
     @Override
     public Long save(PostModel postModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO posts ");
-        sql.append(" (name, status ,createddate,createdby,type,title,thumbnail,description,shortdescription,source,refer,content)");
+        sql.append(" (name, status ,created_date,created_by,type,title,thumbnail,description,short_description,source,refer,content)");
         sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)");
         return insert(sql.toString(),postModel.getName(),postModel.getStatus(),postModel.getCreatedDate(),postModel.getCreatedBy(),
                 postModel.getType(),postModel.getTitle(),postModel.getThumbnail(),postModel.getDescription(),postModel.getShortdescription(),postModel.getSource(),

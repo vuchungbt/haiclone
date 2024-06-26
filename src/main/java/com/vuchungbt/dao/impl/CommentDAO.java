@@ -10,7 +10,7 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
     @Override
     public Long save(CommentModel commentModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO comments ");
-        sql.append(" (name, status ,createddate,createdby,type,title,thumbnail,description,content,level,forPost)");
+        sql.append(" (name, status ,created_date,created_by,type,title,thumbnail,description,content,level,for_post)");
         sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)");
         return insert(sql.toString(),commentModel.getName(),commentModel.getStatus(),commentModel.getCreatedDate(),commentModel.getCreatedBy(),
                 commentModel.getType(),commentModel.getTitle(),commentModel.getThumbnail(),commentModel.getDescription(),commentModel.getContent(),commentModel.getLevel(),

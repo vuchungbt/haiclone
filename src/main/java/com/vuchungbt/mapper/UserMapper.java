@@ -15,10 +15,10 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setEmail(rs.getString("email"));
             user.setGgID(rs.getString("ggID"));
             user.setFbID(rs.getString("fbID"));
-            user.setLastOnline(rs.getTimestamp("lastOnline"));
-            user.setPagePhoto(rs.getString("pagePhoto"));
-            user.setCreatedBy(rs.getString("createdby"));
-            user.setCreatedDate(rs.getTimestamp("createddate"));
+            user.setLastOnline(rs.getTimestamp("last_online"));
+            user.setPagePhoto(rs.getString("page_photo"));
+            user.setCreatedBy(rs.getString("created_by"));
+            user.setCreatedDate(rs.getTimestamp("created_date"));
             user.setDescription(rs.getString("description"));
             user.setStatus(rs.getInt("status"));
             user.setName(rs.getString("name"));
@@ -26,8 +26,8 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setTitle(rs.getString("title"));
             user.setTitle(rs.getString("tel"));
             user.setType(rs.getString("type"));
-            user.setModifiedBy(rs.getString("modifiedby"));
-            user.setModifiedDate(rs.getTimestamp("modifieddate"));
+            user.setModifiedBy(rs.getString("modified_by"));
+            user.setModifiedDate(rs.getTimestamp("modified_date"));
         }
          catch (SQLException e) {
              System.out.println("ResultSet UserModel error:"+e.getMessage());
