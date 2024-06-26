@@ -13,16 +13,16 @@ public class PostMapper implements RowMapper<PostModel> {
             postModel.setId(rs.getLong("id"));
             postModel.setSource(rs.getString("source"));
             postModel.setRefer(rs.getString("refer"));
-            postModel.setCreatedBy(rs.getString("createdby"));
-            postModel.setCreatedDate(rs.getTimestamp("createddate"));
+            postModel.setCreatedBy(rs.getString("created_by"));
+            postModel.setCreatedDate(rs.getTimestamp("created_date"));
             postModel.setDescription(rs.getString("description"));
             postModel.setStatus(rs.getInt("status"));
             postModel.setName(rs.getString("name"));
             postModel.setThumbnail(rs.getString("thumbnail"));
             postModel.setTitle(rs.getString("title"));
             postModel.setType(rs.getString("type"));
-            postModel.setModifiedBy(rs.getString("modifiedby"));
-            postModel.setModifiedDate(rs.getTimestamp("modifieddate"));
+            postModel.setModifiedBy(rs.getString("modified_by"));
+            postModel.setModifiedDate(rs.getTimestamp("modified_date"));
         }
         catch (SQLException e) {
             return null;

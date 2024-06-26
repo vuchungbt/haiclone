@@ -40,17 +40,17 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public void update(UserModel newUser) {
         StringBuilder sql = new StringBuilder("UPDATE users SET avatar=?,");
-        sql.append(" createdby=?,");
-        sql.append(" createddate=?,");
+        sql.append(" created_by=?,");
+        sql.append(" created_date=?,");
         sql.append(" description=?,");
         sql.append(" email=?,");
         sql.append(" fbID=?,");
         sql.append(" ggID=?,");
-        sql.append(" lastOnline=?,");
-        sql.append(" modifiedby=?,");
-        sql.append(" modifieddate=?,");
+        sql.append(" last_online=?,");
+        sql.append(" modified_by=?,");
+        sql.append(" modified_date=?,");
         sql.append(" name=?,");
-        sql.append(" pagePhoto=?,");
+        sql.append(" page_photo=?,");
         sql.append(" roleid=?,");
         sql.append(" status=?,");
         sql.append(" thumbnail=?,");
@@ -73,7 +73,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public Long save(UserModel userModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO users ");
-        sql.append(" (name,fbID ,ggID ,tel, status ,roleid,createddate,createdby,type,title,thumbnail,description,pagePhoto,avatar,email)");
+        sql.append(" (name,fbID ,ggID ,tel, status ,roleid,created_date,created_by,type,title,thumbnail,description,page_photo,avatar,email)");
         sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)");
         return insert(sql.toString(),userModel.getName(),userModel.getFbID(),userModel.getGgID(),userModel.getTel(),userModel.getStatus(),userModel.getRoleId(),userModel.getCreatedDate(),
                 userModel.getCreatedBy(),userModel.getType(),userModel.getTitle(),userModel.getTitle(),userModel.getThumbnail(),userModel.getDescription(),userModel.getPagePhoto(),
