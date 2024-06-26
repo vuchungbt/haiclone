@@ -8,11 +8,11 @@ CREATE TABLE `roles`(
 );
 CREATE TABLE `users` (
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  fbID VARCHAR(25) NOT NULL,
-  ggID VARCHAR(25) NOT NULL,
+  fbID VARCHAR(25) NULL,
+  ggID VARCHAR(25) NULL,
   name VARCHAR(100) NULL,
   tel VARCHAR(12) NULL,
-  status int NOT NULL,
+  status int NOT NULL DEFAULT 0,
   roleid bigint NOT NULL,
   CONSTRAINT pk_user_role FOREIGN KEY (roleid) REFERENCES roles(id),
   created_date TIMESTAMP NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `posts`(
   description TEXT NULL,
   short_description TEXT NULL,
   content TEXT NULL,
-  status int NOT NULL,
+  status int NOT NULL DEFAULT 0,
 );
 CREATE TABLE `comments`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
@@ -57,8 +57,8 @@ CREATE TABLE `comments`(
   title VARCHAR(255) NULL,
   description TEXT NULL,
   content TEXT NULL,
-  status int NOT NULL,
-  `level` int NOT NULL,
+  status int NOT NULL DEFAULT 0,
+  `level` int NOT NULL DEFAULT 0,
   for_post bigint NOT NULL,
   CONSTRAINT pk_comment_post FOREIGN KEY (forPost) REFERENCES posts(id),
 );
