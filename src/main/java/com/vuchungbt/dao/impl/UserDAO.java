@@ -74,9 +74,9 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     public Long save(UserModel userModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO users ");
         sql.append(" (name,fbID ,ggID ,tel, status ,roleid,created_date,created_by,type,title,thumbnail,description,page_photo,avatar,email)");
-        sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?,?)");
+        sql.append(" VALUES(?,?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)");
         return insert(sql.toString(),userModel.getName(),userModel.getFbID(),userModel.getGgID(),userModel.getTel(),userModel.getStatus(),userModel.getRoleId(),userModel.getCreatedDate(),
-                userModel.getCreatedBy(),userModel.getType(),userModel.getTitle(),userModel.getTitle(),userModel.getThumbnail(),userModel.getDescription(),userModel.getPagePhoto(),
+                userModel.getCreatedBy(),userModel.getType(),userModel.getTitle(),userModel.getThumbnail(),userModel.getDescription(),userModel.getPagePhoto(),
                 userModel.getAvatar(),userModel.getEmail()
         );
     }
