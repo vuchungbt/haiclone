@@ -21,8 +21,8 @@ public class PostMapper implements RowMapper<PostModel> {
             postModel.setThumbnail(rs.getString("thumbnail"));
             postModel.setTitle(rs.getString("title"));
             postModel.setType(rs.getString("type"));
-            postModel.setModifiedBy(rs.getString("modified_by"));
-            postModel.setModifiedDate(rs.getTimestamp("modified_date"));
+            postModel.setModifiedBy(rs.getString("updated_by"));
+            postModel.setModifiedDate(rs.getTimestamp("updated_date"));
         }
         catch (SQLException e) {
             return null;

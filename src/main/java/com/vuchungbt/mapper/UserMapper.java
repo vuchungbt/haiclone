@@ -27,8 +27,8 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setTitle(rs.getString("title"));
             user.setTitle(rs.getString("tel"));
             user.setType(rs.getString("type"));
-            user.setModifiedBy(rs.getString("modified_by"));
-            user.setModifiedDate(rs.getTimestamp("modified_date"));
+            user.setModifiedBy(rs.getString("updated_by"));
+            user.setModifiedDate(rs.getTimestamp("updated_date"));
             try{
                 RoleModel role = new RoleModel();
                 role.setCode(rs.getString("code"));

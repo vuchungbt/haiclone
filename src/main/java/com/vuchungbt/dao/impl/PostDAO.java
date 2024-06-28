@@ -27,8 +27,8 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
         sql.append(" content=?,");
         sql.append(" refer=?,");
         sql.append(" source=?,");
-        sql.append(" modified_by=?,");
-        sql.append(" modified_date=?,");
+        sql.append(" updated_by=?,");
+        sql.append(" updated_date=?,");
         sql.append(" status=?,");
         sql.append(" thumbnail=?,");
         sql.append(" title=?,");
