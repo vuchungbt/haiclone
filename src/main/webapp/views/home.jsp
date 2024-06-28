@@ -1,4 +1,6 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- <%@include file="/common/taglib.jsp"%> -->
+
 <html lang="en">
 
 <head>
@@ -24,8 +26,8 @@
       <div>
         <a class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
              border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
-        
-        <button  class="navbar-toggler ms-auto icon-md p-0 bg-opacity-10" 
+
+        <button  class="navbar-toggler ms-auto icon-md p-0 bg-opacity-10"
         type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
           aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-animation">
@@ -388,7 +390,7 @@
                       <span class="spinner-dot"></span>
                       <span class="spinner-dot"></span>
                     </div>
-                    Load more replies 
+                    Load more replies
                   </a>
                   <!-- Comment item nested END -->
                 </li>
