@@ -2,6 +2,7 @@ package com.vuchungbt.dao.impl;
 
 import com.vuchungbt.dao.GenericDAO;
 import com.vuchungbt.mapper.RowMapper;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         ResultSet resultSet = null;
         try {
             connection = getConnection();
-            statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql));
             setParameter(statement, param);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -78,7 +79,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         try {
             connection = getConnection();
             connection.setAutoCommit(false);
-            statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql));
             setParameter(statement, param);
             statement.executeUpdate();
             connection.commit();
@@ -113,7 +114,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             Long id = null;
             connection = getConnection();
             connection.setAutoCommit(false);
-            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql), Statement.RETURN_GENERATED_KEYS);
             setParameter(statement, param);
             statement.executeUpdate();
             resultSet = statement.getGeneratedKeys();
@@ -150,7 +151,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 
     @Override
     public void delete(String sql, Object... param) {
-        this.update(sql, param);
+        this.update(StringEscapeUtils.escapeHtml4(sql), param);
     }
 
     @Override
@@ -161,7 +162,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         try {
             int count = 0;
             connection = getConnection();
-            statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql));
             setParameter(statement, param);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -194,7 +195,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         ResultSet resultSet = null;
         try {
             connection = getConnection();
-            statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql));
             setParameter(statement, param);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {

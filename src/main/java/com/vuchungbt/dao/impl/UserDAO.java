@@ -3,6 +3,7 @@ package com.vuchungbt.dao.impl;
 import com.vuchungbt.dao.IUserDAO;
 import com.vuchungbt.mapper.UserMapper;
 import com.vuchungbt.model.UserModel;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
