@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- <%@include file="/common/taglib.jsp"%> -->
-
 <html lang="en">
 
 <head>
@@ -9,16 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <link href="./css/customize.css" rel="stylesheet">
-  <link href="./css/dropzone.css" rel="stylesheet">
-  <link href="./css/glightbox.min.css" rel="stylesheet">
+  <link href="/public/web/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/web/css/customize.css" rel="stylesheet">
+  <link href="/public/web/css/dropzone.css" rel="stylesheet">
+  <link href="/public/web/css/glightbox.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/42d5adcbca.js"></script>
 
   <title>Meme World</title>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Eighth navbar example">
     <div class="container">
       <a class="navbar-brand" href="#">Meme World</a>
@@ -26,15 +25,9 @@
       <div>
         <a class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
              border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
-
-        <button  class="navbar-toggler ms-auto icon-md p-0 bg-opacity-10"
-        type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
           aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-animation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+          <span class="navbar-toggler-icon"></span>
         </button>
       </div>
       <div class="collapse navbar-collapse" id="navbarsExample07">
@@ -43,34 +36,33 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Top</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#">Trending</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Topic</a>
+            <a class="nav-link">Top</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Ask</a>
           </li>
           <li class="nav-item">
             <a class="nav-link">Chat</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">Ask me</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
+              aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown07">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
-<!--          <li class="nav-item dropdown">-->
-<!--            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"-->
-<!--              aria-expanded="false">Action</a>-->
-<!--            <ul class="dropdown-menu" aria-labelledby="dropdown07">-->
-<!--              <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--              <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--              <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--            </ul>-->
-<!--          </li>-->
+
+
 
         </ul>
 
-        <div class="dropdown mx-4 mb-1 d-flex">
-          <a href="#" class="d-block  text-decoration-none dropdown-toggle mt-1 mx-2 " data-bs-toggle="dropdown"
+        <div class="dropdown mx-2">
+          <a href="#" class="d-blockdropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
 
@@ -97,14 +89,14 @@
             </li>
             <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
-          <form class="w-100 h-90" >
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-          </form>
         </div>
-
+        <form class="form-search">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
       </div>
     </div>
   </nav>
+  <!-- **************** MAIN CONTENT START **************** -->
   <main class="container">
 
     <div class="row py-2">
@@ -130,123 +122,6 @@
       </div>
 
       <div class="col-md-6">
-
-        <article class="blog-post py-1">
-          <div class="card">
-            <div class="d-flex justify-content-between p-2 px-3">
-              <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/UXdKE3o.jpg" width="50"
-                  class="rounded-circle">
-                <div class="d-flex flex-column ml-2 px-2"> <span class="fw-semibold">Jeanette Sun</span> <small
-                    class="mr-2">20 mins</small> </div>
-
-              </div>
-              <div class="dropdown float-lg-end pe-1">
-                <a class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="dropdownTable"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-ellipsis-v text-secondary" aria-hidden="true"></i>
-                </a>
-                <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                  <li><a class="dropdown-item border-radius-md" href="#">Hide</a></li>
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Report</a></li>
-                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Turn on notify</a></li>
-                </ul>
-              </div>
-            </div> <img src="https://i.imgur.com/xhzhaGA.jpg" class="img-fluid">
-            <div class="p-2">
-              <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt.</p>
-              <hr>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-thumbs-up"
-                    aria-hidden="true"></i>Source: <a href="#"> xxxxxxxxxxxxxx......xx </a> </div>
-
-                <div class="d-flex flex-row muted-color"> <span class="ml-2"> <i class="fa fa-envelope-open-o"
-                      aria-hidden="true"></i>Khiếu nại</span>
-                </div>
-              </div>
-              <hr>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex flex-row icons d-flex align-items-center"> <a href="#"><i class="fa fa-thumbs-up"
-                      aria-hidden="true"></i>Like (445) </a> . <a href="#"><i class="fa fa-comment"
-                      aria-hidden="true"></i> </i>Comments (445) </a> </div>
-                <div class="d-flex flex-row muted-color"> <span class="ml-2"> <i class="fa fa-share"
-                      aria-hidden="true"></i>Share</span>
-                </div>
-              </div>
-              <hr>
-              <div class="comments">
-                <div class="blog-comment">
-                  <ul class="comments">
-                    <li class="">
-                      <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar rounded-circle" alt="">
-                      <div class="post-comments">
-                        <div class="float-end">
-
-                          <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like (445) </a>
-                          ·
-                          <a href="#">Reply</a>
-                        </div>
-                        <p class="meta">Dec 19, 2014 <a href="#">JohnDoe</a> </p>
-                        <p class="mb-0">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Etiam a sapien odio, sit amet
-                        </p>
-                      </div>
-                    </li>
-                    <li class="">
-                      <img src="https://bootdey.com/img/Content/user_2.jpg" class="avatar rounded-circle" alt="">
-                      <div class="post-comments">
-
-                        <div class="float-end">
-
-                          <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like (445) </a>
-                          ·
-                          <a href="#">Reply</a>
-                        </div>
-                        <p class="meta">Dec 19, 2014 <a href="#">JohnDoe</a> </p>
-
-                        <p class="mb-0">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                          Etiam a sapien odio, sit amet
-                        </p>
-                      </div>
-
-                      <ul class="comments">
-                        <li class="clearfix">
-                          <img src="https://bootdey.com/img/Content/user_3.jpg" class="avatar rounded-circle" alt="">
-                          <div class="post-comments">
-                            <div class="float-end">
-
-                              <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like (445) </a>
-                              ·
-                              <a href="#">Reply</a>
-                            </div>
-                            <p class="meta">Dec 19, 2014 <a href="#">JohnDoe</a> </p>
-                            <p class="mb-0">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                              Etiam a sapien odio, sit amet
-                            </p>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-                <p class="text-mute"> Xem thêm bình luận</p>
-                <form>
-                  <div class="input-group input-group-sm chatMessageControls">
-                    <input type="text" class="form-control me-2" placeholder="Type your message here.."
-                      aria-describedby="sizing-addon3">
-                    <span class="input-group-btn">
-                      <button id="sendMessageButton" class="btn btn-primary" type="button"><i
-                          class="fa fa-send"></i></button>
-                    </span>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </article>
         <article class="blog-post py-1">
           <div class="card">
             <div class="d-flex justify-content-between p-2 px-3">
@@ -297,7 +172,7 @@
                   <div class="d-flex position-relative">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs">
-                      <a href="#!"><img class="avatar-img rounded-circle" src="img/avatar/05.jpg" alt=""></a>
+                      <a href="#!"><img class="avatar-img rounded-circle" src="/public/web/img/avatar/05.jpg" alt=""></a>
                     </div>
                     <div class="ms-2">
                       <!-- Comment by -->
@@ -329,7 +204,7 @@
                       <div class="d-flex">
                         <!-- Avatar -->
                         <div class="avatar avatar-xs">
-                          <a href="#!"><img class="avatar-img rounded-circle" src="img/avatar/06.jpg" alt=""></a>
+                          <a href="#!"><img class="avatar-img rounded-circle" src="/public/web/img/avatar/06.jpg" alt=""></a>
                         </div>
                         <!-- Comment by -->
                         <div class="ms-2">
@@ -358,7 +233,7 @@
                       <div class="d-flex">
                         <!-- Avatar -->
                         <div class="avatar avatar-story avatar-xs">
-                          <a href="#!"><img class="avatar-img rounded-circle" src="img/avatar/07.jpg" alt=""></a>
+                          <a href="#!"><img class="avatar-img rounded-circle" src="/public/web/img/avatar/07.jpg" alt=""></a>
                         </div>
                         <!-- Comment by -->
                         <div class="ms-2">
@@ -400,7 +275,7 @@
                   <div class="d-flex">
                     <!-- Avatar -->
                     <div class="avatar avatar-xs">
-                    <a href="#!"><img class="avatar-img rounded-circle" src="img/avatar/05.jpg" alt=""></a>
+                    <a href="#!"><img class="avatar-img rounded-circle" src="/public/web/img/avatar/05.jpg" alt=""></a>
                     </div>
                     <!-- Comment by -->
                     <div class="ms-2">
@@ -432,7 +307,7 @@
               <div class="d-flex mb-3">
                 <!-- Avatar -->
                 <div class="avatar avatar-xs me-2">
-                  <a href="#!"> <img class="avatar-img rounded-circle" src="img/avatar/12.jpg" alt=""> </a>
+                  <a href="#!"> <img class="avatar-img rounded-circle" src="/public/web/img/avatar/12.jpg" alt=""> </a>
                 </div>
                 <!-- Comment box  -->
                 <form class="nav nav-item w-100 position-relative">
@@ -516,8 +391,8 @@
       </div>
     </div>
   </footer>
-  <script src="./js/bootstrap.bundle.min.js"></script>
-  <script src="./js/customize.js"></script>
+  <script src="/public/web/js/bootstrap.bundle.min.js"></script>
+  <script src="/public/web/js/customize.js"></script>
 </body>
 
 </html>

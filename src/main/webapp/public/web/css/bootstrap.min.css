@@ -709,7 +709,6 @@ progress {
 .img-fluid {
   max-width: 100%;
   height: auto;
-  margin: 1px;
 }
 
 .img-thumbnail {
@@ -2373,7 +2372,7 @@ progress {
 .form-control {
   display: block;
   width: 100%;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.5;
@@ -3770,10 +3769,10 @@ textarea.form-control-lg {
   margin-left: 0.255em;
   vertical-align: 0.255em;
   content: "";
-  /*border-top: 0.3em solid;*/
-  /*border-right: 0.3em solid transparent;*/
-  /*border-bottom: 0;*/
-  /*border-left: 0.3em solid transparent;*/
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
 }
 .dropdown-toggle:empty::after {
   margin-left: 0;
