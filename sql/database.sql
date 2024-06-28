@@ -4,7 +4,7 @@ CREATE TABLE `roles`(
   name VARCHAR(20) NOT NULL,
   code VARCHAR(20) NOT NULL,
   created_date TIMESTAMP NULL,
-  modified_by VARCHAR(255) NULL
+  updated_by VARCHAR(255) NULL
 );
 CREATE TABLE `users` (
   id bigint NOT NULL PRIMARY KEY auto_increment,
@@ -16,7 +16,7 @@ CREATE TABLE `users` (
   roleid bigint NOT NULL,
   CONSTRAINT pk_user_role FOREIGN KEY (roleid) REFERENCES roles(id),
   created_date TIMESTAMP NULL,
-  modified_date TIMESTAMP NULL,
+  updated_date TIMESTAMP NULL,
   created_by VARCHAR(255) NULL,
   updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `users` (
 CREATE TABLE `posts`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
   created_date TIMESTAMP NULL,
-  modified_date TIMESTAMP NULL,
+  updated_date TIMESTAMP NULL,
   created_by VARCHAR(255) NULL,
   updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,
@@ -43,14 +43,14 @@ CREATE TABLE `posts`(
   description TEXT NULL,
   short_description TEXT NULL,
   content TEXT NULL,
-  status int NOT NULL DEFAULT 0,
+  status int NOT NULL DEFAULT 0
 );
 CREATE TABLE `comments`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
   created_date TIMESTAMP NULL,
-  modified_date TIMESTAMP NULL,
+  updated_date TIMESTAMP NULL,
   created_by VARCHAR(255) NULL,
-  modified_by VARCHAR(255) NULL,
+  updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,
   name VARCHAR(60) NULL,
   thumbnail VARCHAR(255) NULL,
@@ -60,5 +60,5 @@ CREATE TABLE `comments`(
   status int NOT NULL DEFAULT 0,
   `level` int NOT NULL DEFAULT 0,
   for_post bigint NOT NULL,
-  CONSTRAINT pk_comment_post FOREIGN KEY (forPost) REFERENCES posts(id),
+  CONSTRAINT pk_comment_post FOREIGN KEY (for_post) REFERENCES posts(id)
 );

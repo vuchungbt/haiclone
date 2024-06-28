@@ -19,8 +19,8 @@ public class CommentMapper implements RowMapper<CommentModel>{
             commentModel.setThumbnail(rs.getString("thumbnail"));
             commentModel.setTitle(rs.getString("title"));
             commentModel.setType(rs.getString("type"));
-            commentModel.setModifiedBy(rs.getString("modified_by"));
-            commentModel.setModifiedDate(rs.getTimestamp("modified_date"));
+            commentModel.setModifiedBy(rs.getString("updated_by"));
+            commentModel.setModifiedDate(rs.getTimestamp("updated_date"));
             commentModel.setLevel(rs.getInt("level"));
             commentModel.setForPost(rs.getLong("for_post"));
         }

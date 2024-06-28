@@ -48,8 +48,8 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         sql.append(" fbID=?,");
         sql.append(" ggID=?,");
         sql.append(" last_online=?,");
-        sql.append(" modified_by=?,");
-        sql.append(" modified_date=?,");
+        sql.append(" updated_by=?,");
+        sql.append(" updated_date=?,");
         sql.append(" name=?,");
         sql.append(" page_photo=?,");
         sql.append(" roleid=?,");
