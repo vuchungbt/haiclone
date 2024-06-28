@@ -13,17 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
-@WebServlet(urlPatterns = {"/login"})
+@WebServlet(urlPatterns = {"/login","/logout"})
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @Inject
     private IUserService userService;
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String code = request.getParameter("code");
         String state = request.getParameter("state");
+
+
         String path="";
         if (code != null) {
             if (state != null) {
@@ -55,9 +59,15 @@ public class LoginController extends HttpServlet {
         } else {
             path = "/views/login.jsp";
         }
+        String action = request.getParameter("action");
+        if(action!=null &&action.equals("logout")){
+            handleUserLogout(request,response);
+            return;
+        }
         RequestDispatcher rd = request.getRequestDispatcher(path);
         rd.forward(request,response);
     }
+
     public void handleUserLogin(UserModel userModel, String state, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         UserModel existingUser = null;
@@ -68,6 +78,8 @@ public class LoginController extends HttpServlet {
         }
         if (existingUser == null) {
             userService.save(userModel);
+        }else{
+            userService.update(existingUser);
         }
         String jwtToken = JWTUtil.generateToken(userModel);
         Cookie cookie = new Cookie("token",jwtToken);
@@ -77,5 +89,20 @@ public class LoginController extends HttpServlet {
         request.setAttribute("user", userModel);
         RequestDispatcher rd = request.getRequestDispatcher("/views/login.jsp");
         rd.forward(request,response);
+    }
+    public void handleUserLogout(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException{
+        Cookie []cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                    break;
+                }
+            }
+        }
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 }

@@ -18,4 +18,10 @@ public interface IConstant {
     public static final String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 
     public static final String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
+
+    public static final String ADMIN = "admin";
+    public static final String USER = "user101";
+    public static final String MODERATOR = "moderator101";
+    public static final String MANAGER ="manager101";
+
 }

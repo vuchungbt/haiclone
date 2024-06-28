@@ -7,6 +7,15 @@ public class UserModel extends AbstractModel {
     private String avatar,pagePhoto,fbID,ggID,email,tel;
     private Timestamp lastOnline;
     private Long roleId;
+    private RoleModel roleModel;
+
+    public RoleModel getRoleModel() {
+        return roleModel;
+    }
+
+    public void setRoleModel(RoleModel roleModel) {
+        this.roleModel = roleModel;
+    }
 
     public Long getRoleId() {
         return roleId;

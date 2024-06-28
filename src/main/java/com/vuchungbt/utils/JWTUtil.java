@@ -7,15 +7,23 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.vuchungbt.model.UserModel;
 import com.auth0.jwt.JWTCreator.Builder;
 
+import javax.servlet.http.Cookie;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class JWTUtil {
     private static final String SECRET = ResourceBundle.getBundle("secret").getString("SECRET");
+    private static final long EXPIRATION_TIME = 2 * 60 * 60 * 1000;
     public static String generateToken(UserModel user){
         Algorithm algorithm = Algorithm.HMAC384(SECRET);
         Builder builderToken = JWT.create()
                 .withClaim("id", user.getId())
-                .withClaim("name", user.getName());
+                .withClaim("name", user.getName())
+                .withClaim("roleCode",user.getRoleModel().getCode())
+                .withExpiresAt(new Date(System.currentTimeMillis()+ EXPIRATION_TIME))
+                .withIssuedAt(new Date()) // Thời điểm phát hành
+                .withJWTId(UUID.randomUUID().toString()); // thêm id
         if(user.getEmail()!=null){
            builderToken.withClaim("email", user.getEmail());
         }
@@ -25,11 +33,28 @@ public class JWTUtil {
         if(user.getGgID()!=null){
             builderToken.withClaim("GgID",user.getGgID());
         }
-        return builderToken.sign(algorithm);
+        String token = builderToken.sign(algorithm);
+
+        // Thiết lập cookie với cài đặt HttpOnly
+        Cookie tokenCookie = new Cookie("token", token);
+        tokenCookie.setPath("/");
+        tokenCookie.setHttpOnly(true); // Chỉ cho phép truy cập qua HTTP, không cho phép qua JavaScript
+
+
+        return token;
+//        return builderToken.sign(algorithm);
     }
     public static DecodedJWT verifyToken(String token){
         Algorithm algorithm = Algorithm.HMAC384(SECRET);
         JWTVerifier verifier = JWT.require(algorithm).build();
         return verifier.verify(token);
+    }
+    public static String getUserEmailFromToken(String token){
+        DecodedJWT jwt = verifyToken(token);
+        return jwt.getClaim("email").asString();
+    }
+    public static String getRoleCodeFromToken(String token){
+        DecodedJWT jwt = verifyToken(token);
+        return jwt.getClaim("roleCode").asString();
     }
 }
