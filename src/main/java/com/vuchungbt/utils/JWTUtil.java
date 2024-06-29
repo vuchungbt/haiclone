@@ -20,7 +20,7 @@ public class JWTUtil {
         Builder builderToken = JWT.create()
                 .withClaim("id", user.getId())
                 .withClaim("name", user.getName())
-                .withClaim("roleCode",user.getRoleModel().getCode())
+                .withClaim("roleCode",user.getRoleId())
                 .withExpiresAt(new Date(System.currentTimeMillis()+ EXPIRATION_TIME))
                 .withIssuedAt(new Date()) // Thời điểm phát hành
                 .withJWTId(UUID.randomUUID().toString()); // thêm id

@@ -1,6 +1,5 @@
 package com.vuchungbt.mapper;
 
-import com.vuchungbt.model.RoleModel;
 import com.vuchungbt.model.UserModel;
 
 import java.sql.ResultSet;
@@ -27,16 +26,10 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setTitle(rs.getString("title"));
             user.setTitle(rs.getString("tel"));
             user.setType(rs.getString("type"));
+            user.setRoleId(rs.getLong("roleid"));
             user.setModifiedBy(rs.getString("updated_by"));
             user.setModifiedDate(rs.getTimestamp("updated_date"));
-            try{
-                RoleModel role = new RoleModel();
-                role.setCode(rs.getString("code"));
-                role.setName(rs.getString("name"));
-                user.setRoleModel(role);
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
+
         }
          catch (SQLException e) {
              System.out.println("ResultSet UserModel error:"+e.getMessage());

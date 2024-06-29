@@ -59,4 +59,9 @@ public class UserService implements IUserService {
     public int count() {
         return userDAO.count();
     }
+
+    @Override
+    public Long getRoleIDByRoleCode(String roleCode) {
+        return userDAO.getRoleIDByRoleCode(roleCode);
+    }
 }

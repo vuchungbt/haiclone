@@ -43,7 +43,9 @@ CREATE TABLE `posts`(
   description TEXT NULL,
   short_description TEXT NULL,
   content TEXT NULL,
-  status int NOT NULL DEFAULT 0
+  status int NOT NULL DEFAULT 0,
+  auth_id bigint NOT NULL,
+  CONSTRAINT pk_post_user FOREIGN KEY (auth_id) REFERENCES users(id)
 );
 CREATE TABLE `comments`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
@@ -60,5 +62,26 @@ CREATE TABLE `comments`(
   status int NOT NULL DEFAULT 0,
   `level` int NOT NULL DEFAULT 0,
   for_post bigint NOT NULL,
-  CONSTRAINT pk_comment_post FOREIGN KEY (for_post) REFERENCES posts(id)
+  CONSTRAINT pk_comment_post FOREIGN KEY (for_post) REFERENCES posts(id),
+  parent_comment_id INT DEFAULT 1
+);
+CREATE TABLE `tabs`(
+  id bigint NOT NULL PRIMARY KEY auto_increment,
+  created_date TIMESTAMP NULL,
+  updated_date TIMESTAMP NULL,
+  created_by VARCHAR(255) NULL,
+  updated_by VARCHAR(255) NULL,
+  type VARCHAR(60) NULL,
+  name VARCHAR(60) NULL,
+  description VARCHAR(255) NULL,
+  status int NOT NULL DEFAULT 0,
+  is_trend int NOT NULL DEFAULT 0
+);
+CREATE TABLE `post_has_tab`(
+    post_id bigint NOT NULL,
+    CONSTRAINT pk_post_id FOREIGN KEY (post_id) REFERENCES posts(id),
+    tab_id bigint NOT NULL,
+    CONSTRAINT pk_tab_id FOREIGN KEY (tab_id) REFERENCES tabs(id),
+    created_date TIMESTAMP NULL,
+    status int NOT NULL DEFAULT 0
 );

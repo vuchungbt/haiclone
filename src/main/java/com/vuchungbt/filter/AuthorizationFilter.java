@@ -1,8 +1,6 @@
 package com.vuchungbt.filter;
 
 import com.vuchungbt.constant.IConstant;
-import com.vuchungbt.model.RoleModel;
-import com.vuchungbt.model.UserModel;
 import com.vuchungbt.utils.JWTUtil;
 
 import javax.servlet.*;
