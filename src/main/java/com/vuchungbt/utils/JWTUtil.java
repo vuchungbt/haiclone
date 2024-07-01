@@ -39,7 +39,6 @@ public class JWTUtil {
         tokenCookie.setPath("/");
         tokenCookie.setHttpOnly(true);
 
-
         return token;
     }
     public static DecodedJWT verifyToken(String token){
