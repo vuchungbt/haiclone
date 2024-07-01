@@ -6,8 +6,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.vuchungbt.model.UserModel;
 import com.auth0.jwt.JWTCreator.Builder;
-import java.net.HttpCookie;
 
+import javax.servlet.http.Cookie;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.UUID;
@@ -20,7 +20,7 @@ public class JWTUtil {
         Builder builderToken = JWT.create()
                 .withClaim("id", user.getId())
                 .withClaim("name", user.getName())
-                .withClaim("roleCode",user.getRoleModel().getCode())
+                .withClaim("roleCode",user.getRoleId())
                 .withExpiresAt(new Date(System.currentTimeMillis()+ EXPIRATION_TIME))
                 .withIssuedAt(new Date()) // Thời điểm phát hành
                 .withJWTId(UUID.randomUUID().toString()); // thêm id
@@ -35,7 +35,7 @@ public class JWTUtil {
         }
         String token = builderToken.sign(algorithm);
 
-        HttpCookie tokenCookie = new HttpCookie("token", token);
+        Cookie tokenCookie = new Cookie("token", token);
         tokenCookie.setPath("/");
         tokenCookie.setHttpOnly(true);
 

@@ -33,13 +33,11 @@ public class LoginController extends HttpServlet {
             if (state != null) {
                 UserModel acc= null;
                 if (state.equals("google")) {
-                    GoogleLogin gg = new GoogleLogin();
-                    String accessToken = gg.getToken(code);
-                    acc = gg.getUserInfo(accessToken);
+                    String accessToken = GoogleLogin.getToken(code);
+                    acc = GoogleLogin.getUserInfo(accessToken);
                 } else if (state.equals("facebook")) {
-                    FacebookLogin fb = new FacebookLogin();
-                    String accessToken = fb.getToken(code);
-                    acc = fb.getUserInfo(accessToken);
+                    String accessToken = FacebookLogin.getToken(code);
+                    acc = FacebookLogin.getUserInfo(accessToken);
                 } else {
                     System.out.println("Unknown provider: " + state);
                 }

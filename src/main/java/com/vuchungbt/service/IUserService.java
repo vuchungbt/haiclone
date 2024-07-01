@@ -11,4 +11,5 @@ public interface IUserService {
     UserModel update(UserModel userModel);
     void delete(long id);
     int count();
+    Long getRoleIDByRoleCode(String roleCode);
 }
