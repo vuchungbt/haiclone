@@ -24,4 +24,10 @@ public interface IConstant {
     public static final String MODERATOR = "moderator101";
     public static final String MANAGER ="manager101";
 
+    public static final String UPLOAD_DIR = "upload";
+    public static final String UPLOAD_DIR_ROOT = "upload/root";
+    public static final String UPLOAD_DIR_RESIZE = "upload/resize";
+    public static final String UPLOAD_DIR_THUMBNAIL = "upload/thumbnail";
+    public static final String FILE_WATERMARK = "watermark.png";
+
 }
