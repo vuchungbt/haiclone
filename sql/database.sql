@@ -45,6 +45,8 @@ CREATE TABLE `posts`(
   content TEXT NULL,
   status int NOT NULL DEFAULT 0,
   auth_id bigint NOT NULL,
+  verified_date TIMESTAMP NULL,
+  publish_date TIMESTAMP NULL,
   CONSTRAINT pk_post_user FOREIGN KEY (auth_id) REFERENCES users(id)
 );
 CREATE TABLE `comments`(
