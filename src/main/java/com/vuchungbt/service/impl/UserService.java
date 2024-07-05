@@ -35,17 +35,12 @@ public class UserService implements IUserService {
 
     @Override
     public UserModel save(UserModel userModel) {
-        userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         Long iduser = userDAO.save(userModel);
         return userDAO.findByID(iduser);
     }
 
     @Override
     public UserModel update(UserModel userModel) {
-        UserModel oldUser = userDAO.findByID(userModel.getId());
-        userModel.setCreatedDate(oldUser.getCreatedDate());
-        userModel.setCreatedBy(oldUser.getCreatedBy());
-        userModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         userDAO.update(userModel);
         return userDAO.findByID(userModel.getId());
     }

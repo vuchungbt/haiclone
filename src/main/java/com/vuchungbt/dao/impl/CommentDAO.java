@@ -10,8 +10,8 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
     @Override
     public Long save(CommentModel commentModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO comments ");
-        sql.append(" (name, status ,created_date,created_by,type,title,thumbnail,description,content,level,for_post)");
-        sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)");
+        sql.append(" (name, status ,created_by,type,title,thumbnail,description,content,level,for_post)");
+        sql.append(" VALUES(?, ?, ?, ?, ?, ?,?, ?, ?, ?)");
         return insert(sql.toString(),commentModel.getName(),commentModel.getStatus(),commentModel.getCreatedDate(),commentModel.getCreatedBy(),
                 commentModel.getType(),commentModel.getTitle(),commentModel.getThumbnail(),commentModel.getDescription(),commentModel.getContent(),commentModel.getLevel(),
                 commentModel.getForPost()
@@ -21,12 +21,9 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
     @Override
     public void update(CommentModel commentModel) {
         StringBuilder sql = new StringBuilder("UPDATE comments SET name=?,");
-        sql.append(" created_by=?,");
-        sql.append(" created_date=?,");
         sql.append(" description=?,");
         sql.append(" content=?,");
         sql.append(" updated_by=?,");
-        sql.append(" updated_date=?,");
         sql.append(" status=?,");
         sql.append(" thumbnail=?,");
         sql.append(" title=?,");
@@ -34,8 +31,8 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
         sql.append(" level=?,");
         sql.append(" for_post=?");
         sql.append(" WHERE id = ?");
-        update(sql.toString(), commentModel.getCreatedBy(),commentModel.getCreatedDate(),commentModel.getDescription(),commentModel.getContent(),
-                commentModel.getModifiedBy(),commentModel.getModifiedDate(),commentModel.getStatus(),commentModel.getThumbnail(),
+        update(sql.toString(), commentModel.getDescription(),commentModel.getContent(),
+                commentModel.getModifiedBy(),commentModel.getStatus(),commentModel.getThumbnail(),
                 commentModel.getTitle(),commentModel.getType(),commentModel.getLevel(),commentModel.getForPost(),
                 commentModel.getId());
     }

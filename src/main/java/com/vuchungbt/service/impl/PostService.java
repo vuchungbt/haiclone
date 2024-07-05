@@ -22,17 +22,12 @@ public class PostService implements IPostService {
 
     @Override
     public PostModel save(PostModel postModel) {
-        postModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         Long id = postDAO.save(postModel);
         return postDAO.findByID(id);
     }
 
     @Override
     public PostModel update(PostModel postModel) {
-        PostModel oldPost = postDAO.findByID(postModel.getId());
-        postModel.setCreatedDate(oldPost.getCreatedDate());
-        postModel.setCreatedBy(oldPost.getCreatedBy());
-        postModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         postDAO.update(postModel);
         return postDAO.findByID(postModel.getId());
     }

@@ -41,15 +41,12 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public void update(UserModel newUser) {
         StringBuilder sql = new StringBuilder("UPDATE users SET avatar=?,");
-        sql.append(" created_by=?,");
-        sql.append(" created_date=?,");
         sql.append(" description=?,");
         sql.append(" email=?,");
         sql.append(" fbID=?,");
         sql.append(" ggID=?,");
         sql.append(" last_online=?,");
         sql.append(" updated_by=?,");
-        sql.append(" updated_date=?,");
         sql.append(" name=?,");
         sql.append(" page_photo=?,");
         sql.append(" roleid=?,");
@@ -59,9 +56,11 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         sql.append(" tel=?,");
         sql.append(" type=?");
         sql.append(" WHERE id = ?");
-        update(sql.toString(),newUser.getAvatar(),newUser.getCreatedBy(),newUser.getCreatedDate(),newUser.getDescription(),
-                newUser.getEmail(),newUser.getFbID(),newUser.getGgID(),newUser.getLastOnline(),newUser.getModifiedBy(),newUser.getModifiedDate(),
-                newUser.getName(),newUser.getPagePhoto(),newUser.getRoleId(),newUser.getStatus(),newUser.getThumbnail(),newUser.getTitle(),newUser.getTel(),newUser.getType(),
+        update(sql.toString(),newUser.getAvatar(),newUser.getDescription(),
+                newUser.getEmail(),newUser.getFbID(),newUser.getGgID(),newUser.getLastOnline(),
+                newUser.getModifiedBy(),newUser.getName(),newUser.getPagePhoto(),
+                newUser.getRoleId(),newUser.getStatus(),newUser.getThumbnail(),newUser.getTitle(),
+                newUser.getTel(),newUser.getType(),
                 newUser.getId());
     }
 
@@ -74,9 +73,9 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     @Override
     public Long save(UserModel userModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO users ");
-        sql.append(" (name,fbID ,ggID ,tel, status ,roleid,created_date,created_by,type,title,thumbnail,description,page_photo,avatar,email)");
+        sql.append(" (name,fbID ,ggID ,tel, status ,roleid,created_by,type,title,thumbnail,description,page_photo,avatar,email)");
         sql.append(" VALUES(?,?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)");
-        return insert(sql.toString(),userModel.getName(),userModel.getFbID(),userModel.getGgID(),userModel.getTel(),userModel.getStatus(),userModel.getRoleId(),userModel.getCreatedDate(),
+        return insert(sql.toString(),userModel.getName(),userModel.getFbID(),userModel.getGgID(),userModel.getTel(),userModel.getStatus(),userModel.getRoleId(),
                 userModel.getCreatedBy(),userModel.getType(),userModel.getTitle(),userModel.getThumbnail(),userModel.getDescription(),userModel.getPagePhoto(),
                 userModel.getAvatar(),userModel.getEmail()
         );
