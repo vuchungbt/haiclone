@@ -8,6 +8,24 @@ public class PostModel extends AbstractModel {
     private List<String> tab = new ArrayList<>();
     private String source,refer,shortdescription,content;
     private Timestamp publishDate,verifiedDate ;
+    private Long authId;
+
+    public String getShortdescription() {
+        return shortdescription;
+    }
+
+    public void setShortdescription(String shortdescription) {
+        this.shortdescription = shortdescription;
+    }
+
+    public Long getAuthId() {
+        return authId;
+    }
+
+    public void setAuthId(Long authId) {
+        this.authId = authId;
+    }
+    
 
     public Timestamp getPublishDate() {
         return publishDate;

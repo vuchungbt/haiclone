@@ -48,11 +48,11 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
     @Override
     public Long save(PostModel postModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO posts ");
-        sql.append(" (name,publish_date,verified_date, status ,created_by,type,title,thumbnail,description,short_description,source,refer,content)");
-        sql.append(" VALUES(?, ?,?,?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)");
+        sql.append(" (name,publish_date,verified_date, status ,created_by,type,title,thumbnail,description,short_description,source,refer,content,auth_id)");
+        sql.append(" VALUES(?, ?,?,?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?,?)");
         return insert(sql.toString(),postModel.getName(),postModel.getStatus(),postModel.getCreatedBy(),
                 postModel.getType(),postModel.getTitle(),postModel.getThumbnail(),postModel.getDescription(),postModel.getShortDescription(),postModel.getSource(),
-                postModel.getRefer(), postModel.getContent()
+                postModel.getRefer(), postModel.getContent(),postModel.getAuthId()
         );
     }
 

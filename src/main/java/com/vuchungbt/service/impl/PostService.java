@@ -2,12 +2,9 @@ package com.vuchungbt.service.impl;
 
 import com.vuchungbt.dao.IPostDAO;
 import com.vuchungbt.model.PostModel;
-import com.vuchungbt.model.UserModel;
 import com.vuchungbt.service.IPostService;
 
 import javax.inject.Inject;
-import java.sql.Timestamp;
-import java.util.Collections;
 import java.util.List;
 
 public class PostService implements IPostService {

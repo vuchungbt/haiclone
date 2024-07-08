@@ -162,7 +162,6 @@ Rating --------------------------------------------------------
 div.stars{
   display: inline-block;
   padding-top:6px;
-  padding-bottom:6px;
 }
 
 input.star{
