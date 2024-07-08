@@ -41,8 +41,9 @@ public class LoginController extends HttpServlet {
                 } else {
                     System.out.println("Unknown provider: " + state);
                 }
-                if(acc!=null){
+                if(acc != null){
                     handleUserLogin(acc,state,request,response);
+                    System.out.println(acc);
                     return;
 
                 }else{
@@ -70,23 +71,31 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException{
         UserModel existingUser = null;
         if(state.equals("google")){
-            existingUser=userService.findByGgID(userModel.getGgID());
+            existingUser = userService.findByGgID(userModel.getGgID());
         }else{
-            existingUser=userService.findByFbID(userModel.getFbID());
+            existingUser = userService.findByFbID(userModel.getFbID());
         }
         if (existingUser == null) {
-            userService.save(userModel);
+            userModel.setRoleId(1L);
+            userModel = userService.save(userModel);
         }else{
-            userService.update(existingUser);
+            userModel.setId(existingUser.getId());
+            userModel.setRoleId(existingUser.getRoleId());
+            userModel = userService.update(userModel);
         }
+        response.setContentType("application/json");
         String jwtToken = JWTUtil.generateToken(userModel);
+
+        System.out.println("Generated JWT Token: " + jwtToken);
+
         Cookie cookie = new Cookie("token",jwtToken);
+//        cookie.setPath("/");
+//        cookie.setHttpOnly(true);
         response.addCookie(cookie);
-        request.setAttribute("token",jwtToken);
-        request.setAttribute("status",200);
-        request.setAttribute("user", userModel);
-        RequestDispatcher rd = request.getRequestDispatcher("/views/login.jsp");
-        rd.forward(request,response);
+        request.getSession().setAttribute("status", 200);
+        request.getSession().setAttribute("name", userModel.getName());
+        request.getSession().setAttribute("thumbnail",userModel.getThumbnail());
+        response.sendRedirect(request.getContextPath() + "/home");
     }
     public void handleUserLogout(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
@@ -94,8 +103,8 @@ public class LoginController extends HttpServlet {
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
+                    cookie.setValue("");
                     cookie.setMaxAge(0);
-                    cookie.setPath("/");
                     response.addCookie(cookie);
                     break;
                 }
@@ -104,3 +113,5 @@ public class LoginController extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/login");
     }
 }
+
+

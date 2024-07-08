@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
@@ -7,95 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="/public/web/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/public/web/css/customize.css" rel="stylesheet">
-  <link href="/public/web/css/dropzone.css" rel="stylesheet">
-  <link href="/public/web/css/glightbox.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/42d5adcbca.js"></script>
+<%--  <link href="/public/web/css/bootstrap.min.css" rel="stylesheet">--%>
+<%--  <link href="/public/web/css/customize.css" rel="stylesheet">--%>
+<%--  <link href="/public/web/css/dropzone.css" rel="stylesheet">--%>
+<%--  <link href="/public/web/css/glightbox.min.css" rel="stylesheet">--%>
+<%--  <script src="https://kit.fontawesome.com/42d5adcbca.js"></script>--%>
 
   <title>Meme World</title>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Eighth navbar example">
-    <div class="container">
-      <a class="navbar-brand" href="#">Meme World</a>
-
-      <div>
-        <a class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
-             border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
-          aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarsExample07">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Trending</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Top</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Ask</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Chat</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
-              aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-
-
-
-        </ul>
-
-        <div class="dropdown mx-2">
-          <a href="#" class="d-blockdropdown-toggle" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-
-          </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New post</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <div class="ms-sm-1">
-                <input type="checkbox" class="checkbox" id="checkbox">
-                <label for="checkbox" class="checkbox-label">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                  <span class="ball"></span>
-                </label>
-              </div>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-        <form class="form-search">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-    </div>
-  </nav>
   <!-- **************** MAIN CONTENT START **************** -->
   <main class="container">
 
@@ -344,14 +268,14 @@
             <div class="card-body position-relative pt-0">
               <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay
                 assistance joy.</p>
-            </div>
-            <!-- Card body END -->
+            </div><!-- Card body END -->
           </div>
 
 
           <div class="p-4">
             <h4 class="fst-italic">Archives</h4>
             <ol class="list-unstyled mb-0">
+
               <li><a href="#">March 2021</a></li>
               <li><a href="#">February 2021</a></li>
               <li><a href="#">January 2021</a></li>
@@ -379,20 +303,11 @@
       </div>
 </div>
   </main>
-  <footer class="py-2 bg-dark mt-auto">
-    <div class="container px-4">
-      <div class="d-flex align-items-center justify-content-between small">
-        <div class="text-white">Copyright © vuchung 2024</div>
-        <div>
-          <a href="#">Privacy Policy</a>
-          ·
-          <a href="#">Terms &amp; Conditions</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <script src="/public/web/js/bootstrap.bundle.min.js"></script>
-  <script src="/public/web/js/customize.js"></script>
+
+<%--  <script src="/public/web/js/bootstrap.bundle.min.js"></script>--%>
+<%--  <script src="/public/web/js/customize.js"></script>--%>
+
+
 </body>
 
 </html>

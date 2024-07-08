@@ -94,5 +94,12 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
         return findOne(sql,new UserMapper(), roleCode).getRoleId();
     }
 
+    @Override
+    public String getRoleCodeByRoleId(Long roleId) {
+        String sql = "SELECT code FROM roles WHERE id = ?";
+//        return findOne(sql,sql,roleId).toString();
+        return null;
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package com.vuchungbt.controller.login;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.vuchungbt.constant.IConstant;
 import com.vuchungbt.model.UserModel;
@@ -37,11 +38,10 @@ public class GoogleLogin {
         ggAccount.setGgID(object.get("id").getAsString());
         ggAccount.setName(object.get("name").getAsString());
         ggAccount.setEmail((object.get("email").getAsString()));
-//        if(object.has("picture")){
-//            JsonObject picObject = object.getAsJsonObject("picture")
-//                    .getAsJsonObject("data");
-//            ggAccount.setThumbnail(picObject.get("url").getAsString());
-//        }
+        if (object.has("picture")) {
+            ggAccount.setThumbnail(object.get("picture").getAsString());
+
+        }
         return ggAccount;
     }
 }

@@ -16,6 +16,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <style>
+        dialog{
+            display: none;
+        }
+        dialog.show {
+            display: block;
+        }
+    </style>
 
 </head>
 <body >

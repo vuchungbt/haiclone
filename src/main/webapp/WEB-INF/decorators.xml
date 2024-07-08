@@ -4,5 +4,9 @@
     <decorator name="Đăng nhập" page ="login.jsp">
         <pattern>/login</pattern>
     </decorator>
+    <decorator name ="web" page ="web.jsp">
+        <pattern>/home</pattern>
+    </decorator>
+
 
 </decorators>

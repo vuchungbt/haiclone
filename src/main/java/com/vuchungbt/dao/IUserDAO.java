@@ -16,4 +16,5 @@ public interface IUserDAO extends GenericDAO<UserModel> {
 //    List<UserModel> findByRoleID(Long id);
 //    List<UserModel> findByRoleCode(String code);
     Long getRoleIDByRoleCode(String roleCode);
+    String getRoleCodeByRoleId(Long roleId);
 }
