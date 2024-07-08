@@ -18,7 +18,7 @@ public class AuthorizationFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)  {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
@@ -33,40 +33,45 @@ public class AuthorizationFilter implements Filter {
                 }
             }
         }
-        if(tokenCookie!=null){
-            String token = tokenCookie.getValue();
-            String roleCode = JWTUtil.getRoleCodeFromToken(token);
-            if(url.startsWith("/admin")){
-                if(roleCode.equalsIgnoreCase(IConstant.ADMIN)){
-                    filterChain.doFilter(servletRequest,servletResponse);
+        try {
+            if(tokenCookie!=null){
+                String token = tokenCookie.getValue();
+                String roleCode = JWTUtil.getRoleCodeFromToken(token);
+                if(url.startsWith("/admin")){
+                    if(roleCode.equalsIgnoreCase(IConstant.ADMIN)){
+                        filterChain.doFilter(servletRequest,servletResponse);
+                    }else{
+                        ////
+                        response.sendRedirect(request.getContextPath() +"/login?message=not_permission&alert=danger");
+                    }
+                }else if(url.startsWith("/moderator")){
+                    if(roleCode.equalsIgnoreCase(IConstant.ADMIN)||roleCode.equalsIgnoreCase(IConstant.MODERATOR)){
+                        filterChain.doFilter(servletRequest,servletResponse);
+                    }else{
+                        //
+                        response.sendRedirect(request.getContextPath() +"/login?message=not_permission&alert=danger");
+                    }
+                }else if(url.startsWith("/manager")){
+                    if (roleCode.equalsIgnoreCase(IConstant.ADMIN)||roleCode.equalsIgnoreCase(IConstant.MODERATOR)||roleCode.equalsIgnoreCase(IConstant.MANAGER)){
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    }else{
+                        //
+                        response.sendRedirect(request.getContextPath() +"/login?message=not_permission&alert=danger");
+                    }
                 }else{
-                    ////
-                    response.sendRedirect(request.getContextPath() +"/login?message=not_permission&alert=danger");
+                    filterChain.doFilter(servletRequest, servletResponse);
                 }
-            }else if(url.startsWith("/moderator")){
-                if(roleCode.equalsIgnoreCase(IConstant.ADMIN)||roleCode.equalsIgnoreCase(IConstant.MODERATOR)){
-                    filterChain.doFilter(servletRequest,servletResponse);
-                }else{
-                    //
-                    response.sendRedirect(request.getContextPath() +"/login?message=not_permission&alert=danger");
-                }
-            }else if(url.startsWith("/manager")){
-                if (roleCode.equalsIgnoreCase(IConstant.ADMIN)||roleCode.equalsIgnoreCase(IConstant.MODERATOR)||roleCode.equalsIgnoreCase(IConstant.MANAGER)){
+            }else{
+                if(!url.startsWith("/admin")&&!url.startsWith("/moderator")&&!url.startsWith("/manager")){
                     filterChain.doFilter(servletRequest, servletResponse);
                 }else{
-                    //
-                    response.sendRedirect(request.getContextPath() +"/login?message=not_permission&alert=danger");
+                    response.sendRedirect(request.getContextPath() +"/login?message=not_login&alert=danger");
                 }
-            }else{
-                filterChain.doFilter(servletRequest, servletResponse);
             }
-        }else{
-            if(!url.startsWith("/admin")&&!url.startsWith("/moderator")&&!url.startsWith("/manager")){
-                filterChain.doFilter(servletRequest, servletResponse);
-            }else{
-                response.sendRedirect(request.getContextPath() +"/login?message=not_login&alert=danger");
-            }
+        } catch (ServletException |IOException e) {
+            System.out.println(e.getMessage());
         }
+
     }
 
     @Override

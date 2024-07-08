@@ -1,16 +1,22 @@
-<!doctype html>
-<html lang="en">
-
+<%@include file="/common/tablib.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Post</title>
 
   <!-- Bootstrap CSS -->
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <link href="./css/customize.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/dropify.min.css">
-  <script src="https://kit.fontawesome.com/42d5adcbca.js"></script>
+  <link rel="stylesheet" href="<c:url value='/public/web/css/bootstrap.min.css' />" />
+  <link rel="stylesheet" href="<c:url value='/public/web/css/customize.css' />" />
+  <link rel="stylesheet" href="<c:url value='/public/web/css/dropify.min.css' />" />
+
+  <script src="<c:url value='/public/web/js/kit.42d5adcbca.js' />" ></script>
+  <!-- Dark mode -->
+  <script src="<c:url value='/public/web/js/theme.js' />"></script>
+
   <style>
     textarea {
       width: 100%;
@@ -18,87 +24,13 @@
       resize: none;
     }
   </style>
-  <title>Profile-Meme World</title>
 </head>
 
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Eighth navbar example">
-    <div class="container">
-      <a class="navbar-brand" href="#">Meme World</a>
 
-      <div>
-        <a class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
-             border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
-          aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarsExample07">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Trending</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Top</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Ask</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Chat</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
-              aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+    <%@ include file="/common/web/header-bar.jsp" %>
 
-
-
-        </ul>
-
-        <div class="dropdown mx-2">
-          <a href="#" class="d-blockdropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-
-          </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New post</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <div class="ms-sm-1">
-                <input type="checkbox" class="checkbox" id="checkbox">
-                <label for="checkbox" class="checkbox-label">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                  <span class="ball"></span>
-                </label>
-              </div>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-        <form>
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
-      </div>
-    </div>
-  </nav>
   <!-- **************** MAIN CONTENT START **************** -->
   <main class="py-2">
 
@@ -382,10 +314,10 @@
       </div>
     </div>
   </footer>
-  <script src="./js/bootstrap.bundle.min.js"></script>
-  <script src="./js/customize.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="js/dropify.js"></script>
+  <script src="<c:url value='/public/web/js/bootstrap.bundle.min.js' />"></script>
+  <script src="<c:url value='/public/web/js/customize.js' />"></script>
+  <script src="<c:url value='/public/web/js/dropify.js' />"></script>
+  <script src="<c:url value='/public/web/js/jquery-3.5.1.js' />"></script>
   <script>
     $(document).ready(function () {
       // Basic
