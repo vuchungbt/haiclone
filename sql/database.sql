@@ -3,7 +3,8 @@ CREATE TABLE `roles`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
   name VARCHAR(20) NOT NULL,
   code VARCHAR(20) NOT NULL,
-  created_date TIMESTAMP NULL,
+  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   updated_by VARCHAR(255) NULL
 );
 CREATE TABLE `users` (
@@ -15,8 +16,8 @@ CREATE TABLE `users` (
   status int NOT NULL DEFAULT 0,
   roleid bigint NOT NULL,
   CONSTRAINT pk_user_role FOREIGN KEY (roleid) REFERENCES roles(id),
-  created_date TIMESTAMP NULL,
-  updated_date TIMESTAMP NULL,
+  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   created_by VARCHAR(255) NULL,
   updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,
@@ -30,8 +31,8 @@ CREATE TABLE `users` (
 );
 CREATE TABLE `posts`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  created_date TIMESTAMP NULL,
-  updated_date TIMESTAMP NULL,
+  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   created_by VARCHAR(255) NULL,
   updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,
@@ -45,12 +46,14 @@ CREATE TABLE `posts`(
   content TEXT NULL,
   status int NOT NULL DEFAULT 0,
   auth_id bigint NOT NULL,
+  verified_date TIMESTAMP NULL,
+  publish_date TIMESTAMP NULL,
   CONSTRAINT pk_post_user FOREIGN KEY (auth_id) REFERENCES users(id)
 );
 CREATE TABLE `comments`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  created_date TIMESTAMP NULL,
-  updated_date TIMESTAMP NULL,
+  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   created_by VARCHAR(255) NULL,
   updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,
@@ -67,8 +70,8 @@ CREATE TABLE `comments`(
 );
 CREATE TABLE `tabs`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
-  created_date TIMESTAMP NULL,
-  updated_date TIMESTAMP NULL,
+  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   created_by VARCHAR(255) NULL,
   updated_by VARCHAR(255) NULL,
   type VARCHAR(60) NULL,

@@ -1,0 +1,17 @@
+1. **Đăng ký/Đăng nhập**: Cho phép người dùng tạo tài khoản và đăng nhập vào hệ thống.
+2. **Quản lý hồ sơ người dùng**: Người dùng có thể cập nhật thông tin cá nhân, ảnh đại diện, và tiểu sử.
+3. **Phân quyền người dùng**: Xác định các quyền khác nhau cho người dùng, ví dụ như admin, moderator, thành viên, và khách.
+4. **Phân loại chủ đề**: Tạo các danh mục hoặc chủ đề để tổ chức các bài viết.
+5. **Tìm kiếm và lọc**: Cho phép người dùng tìm kiếm và lọc bài viết theo các tiêu chí khác nhau.
+6. **Bình luận và phản hồi**: Người dùng có thể bình luận và phản hồi lại các bài viết.
+7. **Thích và không thích**: Cho phép người dùng bày tỏ sự ủng hộ hoặc không ủng hộ đối với bài viết hoặc bình luận.
+8. **Thông báo**: Gửi thông báo cho người dùng khi có bình luận mới, thích bài viết, hoặc khi có bài viết mới trong các chủ đề mà họ quan tâm.
+9. **Tin nhắn riêng**: Cho phép người dùng gửi tin nhắn riêng cho nhau.
+10. **Quản lý và báo cáo vi phạm**: Cho phép người dùng báo cáo các bài viết hoặc bình luận vi phạm quy tắc, và cho phép admin/moderator xử lý các báo cáo này.
+11. **Thống kê và phân tích**: Cung cấp các báo cáo và thống kê về hoạt động của diễn đàn, như số lượng bài viết, bình luận, người dùng hoạt động hàng ngày, v.v.
+12. **Chia sẻ mạng xã hội**: Cho phép người dùng chia sẻ bài viết lên các mạng xã hội khác như Facebook, Twitter, v.v.
+13. **Tích hợp đa phương tiện**: Hỗ trợ nhúng video, ảnh, và các tệp tin khác vào bài viết và bình luận.
+14. **Chế độ xem trước bài viết**: Cho phép người dùng xem trước bài viết trước khi đăng.
+15. **Hệ thống thẻ (tags)**: Giúp tổ chức và tìm kiếm bài viết dựa trên các thẻ.
+16. **Hệ thống đánh giá**: Cho phép người dùng đánh giá chất lượng bài viết hoặc bình luận.
+17. **Gợi ý bài viết**: Đề xuất các bài viết liên quan dựa trên nội dung mà người dùng đang xem.

@@ -1,5 +1,23 @@
-const checkbox = document.getElementById("checkbox")
+const checkbox = document.getElementById("checkbox");
+const ball = document.getElementById("ball24");
+
+const getPreferredBall = () => {
+    return localStorage.getItem('theme')
+}
+
+const setThemeBall = function (theme) {
+    console.log('theme:',theme);
+    if(theme=='dark') {
+        ball.style.transform = 'translateX(24px)';
+    }
+    else  ball.style.transform = 'translateX(0px)';
+}
+window.addEventListener('DOMContentLoaded', () => { 
+    setThemeBall(getPreferredBall());
+
+})
+
 checkbox.addEventListener("change", () => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) document.body.classList.toggle("light");
-    else document.body.classList.toggle("dark");
+    console.log('checkbox changed');
+    setThemeBall(getPreferredBall());
 })

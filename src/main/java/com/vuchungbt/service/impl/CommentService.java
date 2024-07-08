@@ -15,17 +15,12 @@ public class CommentService implements ICommentService {
     private ICommentDAO commentDAO;
     @Override
     public CommentModel save(CommentModel commentModel) {
-        commentModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         Long id = commentDAO.save(commentModel);
         return commentDAO.findByID(id);
     }
 
     @Override
     public CommentModel update(CommentModel commentModel) {
-        CommentModel oldCmt = commentDAO.findByID(commentModel.getId());
-        commentModel.setCreatedDate(oldCmt.getCreatedDate());
-        commentModel.setCreatedBy(oldCmt.getCreatedBy());
-        commentModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         commentDAO.update(commentModel);
         return commentDAO.findByID(commentModel.getId());
     }

@@ -17,6 +17,13 @@
     <link href="<c:url value='/template/web/css/glightbox.min.css'/> " rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
+<%--    <link rel="stylesheet" href="<c:url value='/public/web/css/bootstrap.min.css' />" />--%>
+<%--    <link rel="stylesheet" href="<c:url value='/public/web/css/customize.css' />" />--%>
+    <script src="<c:url value='/public/web/js/kit.42d5adcbca.js' />"></script>
+
+    <!-- Dark mode -->
+    <script src="<c:url value='/public/web/js/theme.js' />"></script>
+
     <link rel="stylesheet" href = "<c:url value="/template/web/css/style.css" />" type="text/css" media="all">
 
     <script type="text/javascript" src="/template/web/js/token/refreshToken.js"></script>
@@ -24,7 +31,7 @@
 
 <body>
     <%--header--%>
-    <%@include file="/common/web/header.jsp"%>
+    <%@include file="/common/web/header-bar.jsp"%>
     <%--header--%>
 
     <dec:body/>

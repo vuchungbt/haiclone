@@ -45,19 +45,19 @@ public class AuthorizationFilter implements Filter {
                 String token = tokenCookie.getValue();
                 handleValidToken(token,url,request,response,filterChain);
 
-        }catch (TokenExpiredException e){
+            }catch (TokenExpiredException e){
                 handleExpiredToken(url,request,response,filterChain);
 
-        }catch (Exception e){
+            }catch (Exception e){
                 System.out.println("Invalid token: " + e.getMessage());
                 handleInvalidToken(request,response);
-        }
+            }
         }else{
             handleNoToken(url,request,response,filterChain);
         }
     }
     private void handleValidToken(String token, String url, HttpServletRequest request,HttpServletResponse response,FilterChain filterChain)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         String roleCode = null;
 //        Long roleID = userService.getRoleIDByRoleCode(IConstant.USER);
         if(url.startsWith("/login")){
@@ -93,7 +93,7 @@ public class AuthorizationFilter implements Filter {
 
     }
     private void handleExpiredToken( String url,HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         Cookie []cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -115,7 +115,7 @@ public class AuthorizationFilter implements Filter {
         response.sendRedirect(request.getContextPath() + "/login?message=token_invalid&alert=danger");
     }
     private void handleNoToken(String url, HttpServletRequest request, HttpServletResponse response, FilterChain filterChain )
-        throws ServletException, IOException{
+            throws ServletException, IOException{
         if(checkURLForNoToken(url)) {
             filterChain.doFilter(request, response);
         }else{

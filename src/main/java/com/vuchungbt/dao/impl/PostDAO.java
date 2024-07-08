@@ -20,22 +20,22 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
     @Override
     public void update(PostModel newPost) {
         StringBuilder sql = new StringBuilder("UPDATE posts SET name=?,");
-        sql.append(" created_by=?,");
-        sql.append(" created_date=?,");
         sql.append(" description=?,");
         sql.append(" short_description=?,");
         sql.append(" content=?,");
         sql.append(" refer=?,");
         sql.append(" source=?,");
         sql.append(" updated_by=?,");
-        sql.append(" updated_date=?,");
         sql.append(" status=?,");
         sql.append(" thumbnail=?,");
         sql.append(" title=?,");
+        sql.append(" publish_date=?,");
+        sql.append(" verified_date=?,");
         sql.append(" type=?");
         sql.append(" WHERE id = ?");
-        update(sql.toString(), newPost.getCreatedBy(),newPost.getCreatedDate(),newPost.getDescription(),newPost.getShortdescription(),newPost.getContent(),
-                newPost.getRefer(),newPost.getSource(),newPost.getModifiedBy(),newPost.getModifiedDate(),newPost.getStatus(),newPost.getThumbnail(),newPost.getTitle(),newPost.getType(),
+        update(sql.toString(),newPost.getDescription(),newPost.getShortDescription(),newPost.getContent(),
+                newPost.getRefer(),newPost.getSource(),newPost.getModifiedBy(),newPost.getStatus(),newPost.getThumbnail(),newPost.getTitle(),
+                newPost.getPublishDate(),newPost.getVerifiedDate(),newPost.getType(),
                 newPost.getId());
     }
 
@@ -48,11 +48,11 @@ public class PostDAO extends AbstractDAO<PostModel> implements IPostDAO {
     @Override
     public Long save(PostModel postModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO posts ");
-        sql.append(" (name, status ,created_date,created_by,type,title,thumbnail,description,short_description,source,refer,content)");
-        sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)");
-        return insert(sql.toString(),postModel.getName(),postModel.getStatus(),postModel.getCreatedDate(),postModel.getCreatedBy(),
-                postModel.getType(),postModel.getTitle(),postModel.getThumbnail(),postModel.getDescription(),postModel.getShortdescription(),postModel.getSource(),
-                postModel.getRefer(), postModel.getContent()
+        sql.append(" (name,publish_date,verified_date, status ,created_by,type,title,thumbnail,description,short_description,source,refer,content,auth_id)");
+        sql.append(" VALUES(?, ?,?,?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?,?)");
+        return insert(sql.toString(),postModel.getName(),postModel.getStatus(),postModel.getCreatedBy(),
+                postModel.getType(),postModel.getTitle(),postModel.getThumbnail(),postModel.getDescription(),postModel.getShortDescription(),postModel.getSource(),
+                postModel.getRefer(), postModel.getContent(),postModel.getAuthId()
         );
     }
 
