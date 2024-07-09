@@ -1,4 +1,4 @@
-<footer class="py-2 bg-dark mt-auto">
+<footer class="py-2 bg-dark mt-auto " style="position: absolute; bottom: 0; width: 100%;">
     <div class="container px-4">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-white">Copyright © vuchung 2024</div>
