@@ -71,9 +71,7 @@ public class LoginController extends HttpServlet {
     public void handleUserLogin(UserModel userModel, String state, HttpServletRequest request, HttpServletResponse response)
             throws IOException{
         UserModel existingUser = null;
-        if(userModel!=null) {
-            System.out.println("--------userModel:");
-                    }
+
         if(state.equals("google")){
             existingUser = userService.findByGgID(userModel.getGgID());
         }else{
@@ -88,8 +86,6 @@ public class LoginController extends HttpServlet {
         }else{
             userModel.setId(existingUser.getId());
             userModel.setRoleId(existingUser.getRoleId());
-
-            System.out.println("update+ ID :"+userModel.getId());
             userModel = userService.update(userModel);
         }
 
