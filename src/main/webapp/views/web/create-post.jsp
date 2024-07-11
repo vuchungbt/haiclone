@@ -314,10 +314,10 @@
       </div>
     </div>
   </footer>
+  <script src="<c:url value='/public/web/js/jquery-3.5.1.js' />"></script>
   <script src="<c:url value='/public/web/js/bootstrap.bundle.min.js' />"></script>
   <script src="<c:url value='/public/web/js/customize.js' />"></script>
   <script src="<c:url value='/public/web/js/dropify.js' />"></script>
-  <script src="<c:url value='/public/web/js/jquery-3.5.1.js' />"></script>
   <script>
     $(document).ready(function () {
       // Basic

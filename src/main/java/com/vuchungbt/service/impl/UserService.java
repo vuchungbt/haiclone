@@ -34,6 +34,7 @@ public class UserService implements IUserService {
     @Override
     public UserModel save(UserModel userModel) {
         Long iduser = userDAO.save(userModel);
+        System.out.println("SAVE genID"+iduser);
         return userDAO.findByID(iduser);
     }
 

@@ -60,7 +60,7 @@
                   <hr class="dropdown-divider">
                 </li>
                 <li>
-                  <div class="ms-sm-1">
+                  <div class="ms-sm-1 theme-icon-active">
                     <input type="checkbox" class="checkbox" id="checkbox">
                     <label for="checkbox" class="checkbox-label">
                       <i  class="nav-link text-primary-hover mb-0 active" data-bs-theme-value="light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Light">
@@ -89,7 +89,7 @@
           </c:if>
 
           <c:if test="${empty cookie.token}">
-            <a class="login-link" href='<c:url value="/login" />'>Login</a>
+            <a role"button" style="margin:5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Login</a>
           </c:if>
 
           <form>

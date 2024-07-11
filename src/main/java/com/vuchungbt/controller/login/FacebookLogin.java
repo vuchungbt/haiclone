@@ -30,6 +30,7 @@ public class FacebookLogin {
         }
 
             JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
+            System.out.println(jobj.get("access_token").toString().replaceAll("\"", ""));
             return jobj.get("access_token").toString().replaceAll("\"", "");
     }
     public static UserModel getUserInfo(final String accessToken) throws ClientProtocolException, IOException {

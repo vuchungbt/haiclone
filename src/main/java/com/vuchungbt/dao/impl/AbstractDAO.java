@@ -114,6 +114,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             Long id = null;
             connection = getConnection();
             connection.setAutoCommit(false);
+            System.out.println("SQL save:"+sql);
             statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql), Statement.RETURN_GENERATED_KEYS);
             setParameter(statement, param);
             statement.executeUpdate();
@@ -122,8 +123,10 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                 id = resultSet.getLong(1);
             }
             connection.commit();
+            System.out.println("root genID:"+id);
             return id;
         } catch (SQLException e) {
+            System.out.println("Save error:"+e.getMessage());
             if (connection != null) {
                 try {
                     connection.rollback();
@@ -193,6 +196,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+        System.out.println(sql);
         try {
             connection = getConnection();
             statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql));

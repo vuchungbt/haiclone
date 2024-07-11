@@ -1,5 +1,6 @@
 package com.vuchungbt.controller.login;
 
+import com.vuchungbt.constant.IConstant;
 import com.vuchungbt.model.UserModel;
 import com.vuchungbt.service.IUserService;
 import com.vuchungbt.utils.JWTUtil;
@@ -68,21 +69,31 @@ public class LoginController extends HttpServlet {
     }
 
     public void handleUserLogin(UserModel userModel, String state, HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws IOException{
         UserModel existingUser = null;
+        if(userModel!=null) {
+            System.out.println("--------userModel:");
+                    }
         if(state.equals("google")){
             existingUser = userService.findByGgID(userModel.getGgID());
         }else{
             existingUser = userService.findByFbID(userModel.getFbID());
         }
+
         if (existingUser == null) {
-            userModel.setRoleId(1L);
+            userModel.setRoleId(userService.getRoleIDByRoleCode(IConstant.USER));
+
+            System.out.println("save+ ID :"+userModel.getId());
             userModel = userService.save(userModel);
         }else{
             userModel.setId(existingUser.getId());
             userModel.setRoleId(existingUser.getRoleId());
+
+            System.out.println("update+ ID :"+userModel.getId());
             userModel = userService.update(userModel);
         }
+
+
         response.setContentType("application/json");
         String jwtToken = JWTUtil.generateToken(userModel);
 

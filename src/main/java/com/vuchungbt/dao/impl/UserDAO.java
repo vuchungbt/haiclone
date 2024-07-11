@@ -74,7 +74,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
     public Long save(UserModel userModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO users ");
         sql.append(" (name,fbID ,ggID ,tel, status ,roleid,created_by,type,title,thumbnail,description,page_photo,avatar,email)");
-        sql.append(" VALUES(?,?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?,?)");
+        sql.append(" VALUES(?,?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(),userModel.getName(),userModel.getFbID(),userModel.getGgID(),userModel.getTel(),userModel.getStatus(),userModel.getRoleId(),
                 userModel.getCreatedBy(),userModel.getType(),userModel.getTitle(),userModel.getThumbnail(),userModel.getDescription(),userModel.getPagePhoto(),
                 userModel.getAvatar(),userModel.getEmail()
@@ -89,8 +89,9 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO  {
 
     @Override
     public Long getRoleIDByRoleCode(String roleCode) {
-        String sql = "SELECT id as roleid, code as name FROM roles";
-        return findOne(sql,new UserMapper(), roleCode).getRoleId();
+        String sql_right_to_role = "SELECT fbID,ggID,tel,users.status,users.created_date,users.id,users.updated_date,users.created_by,users.updated_by,type,title,thumbnail,description,last_online,page_photo,avatar,email,roles.id as roleid, roles.code as name FROM users RIGHT JOIN roles ON users.roleid = roles.id where roles.code =?  LIMIT 1";
+        String sql = "SELECT id as roleid, code as name FROM roles where roles.code = ?";
+        return findOne(sql_right_to_role,new UserMapper(), roleCode).getRoleId();
     }
 
     @Override
