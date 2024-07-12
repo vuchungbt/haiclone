@@ -11,11 +11,12 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<c:url value='/template/web/css/bootstrap.min.css' />" />
   <link rel="stylesheet" href="<c:url value='/template/web/css/customize.css' />" />
-  <link rel="stylesheet" href="<c:url value='/template/web/css/dropify.min.css' />" />
 
   <script src="<c:url value='/template/web/js/kit.42d5adcbca.js' />" ></script>
   <!-- Dark mode -->
   <script src="<c:url value='/template/web/js/theme.js' />"></script>
+  <!-- canvas -->
+  <script src="<c:url value='/template/canvas-editor/js/creator.js' />"></script>
 
   <style>
     textarea {
@@ -47,10 +48,19 @@
               <textarea maxlength="1000" class="form-control pe-4 border-0" rows="2" data-autoresize=""
                 placeholder="Share your thoughts..."></textarea>
             </form>
+
             <div>
-              <input type="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square"
-                data-max-file-size="2M" data-max-height="2000" />
+
+
+
+                <div id="placeholder"></div>
+                <p><button id="resetTemplateButton">Reset</button></p>
+
+
+
+
             </div>
+
             <!-- Share feed toolbar END -->
           </div>
         </div>
@@ -161,55 +171,8 @@
   <script src="<c:url value='/template/web/js/jquery-3.5.1.js' />"></script>
   <script src="<c:url value='/template/web/js/bootstrap.bundle.min.js' />"></script>
   <script src="<c:url value='/template/web/js/customize.js' />"></script>
-  <script src="<c:url value='/template/web/js/dropify.js' />"></script>
   <script>
-    $(document).ready(function () {
-      // Basic
-      $('.dropify').dropify();
-
-      // Translated
-      $('.dropify-fr').dropify({
-        messages: {
-          default: 'Glissez-déposez un fichier ici ou cliquez',
-          replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-          remove: 'Supprimer',
-          error: 'Désolé, le fichier trop volumineux'
-        }
-      });
-
-      // Used events
-      var drEvent = $('#input-file-events').dropify();
-
-      drEvent.on('dropify.beforeClear', function (event, element) {
-        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-      });
-
-      drEvent.on('dropify.afterClear', function (event, element) {
-        alert('File deleted');
-      });
-
-      drEvent.on('dropify.errors', function (event, element) {
-        console.log('Has Errors');
-      });
-
-      var drDestroy = $('#input-file-to-destroy').dropify();
-      drDestroy = drDestroy.data('dropify')
-      $('#toggleDropify').on('click', function (e) {
-        e.preventDefault();
-        if (drDestroy.isDropified()) {
-          drDestroy.destroy();
-        } else {
-          drDestroy.init();
-        }
-      })
-    });
-    document.querySelectorAll('[data-autoresize]').forEach(function (element) {
-			var offset = element.offsetHeight - element.clientHeight;
-			element.addEventListener('input', function (event) {
-				event.target.style.height = 'auto';
-				event.target.style.height = event.target.scrollHeight + offset + 'px';
-			});
-		});
+  	window.dataLayer = window.dataLayer || [];
   </script>
 </body>
 

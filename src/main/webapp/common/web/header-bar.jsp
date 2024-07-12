@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="<c:url value='/home'/>">Meme World</a>
 
         <div>
-          <a class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
+          <a href="<c:url value='/notifications'/>" class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
                border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
             aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
 
           </ul>
           <c:if test="${not empty cookie.token}">
-            <div class="dropdown mx-2">
+            <div class="dropdown border-bottom-menu">
               <a href="#" class="d-blockdropdown-toggle" data-bs-toggle="dropdown"
                  aria-expanded="false">
                 <c:if test="${not empty thumbnail}">
@@ -54,13 +54,13 @@
               </a>
               <ul class="dropdown-menu text-small">
                 <li><a class="dropdown-item" href="<c:url value='/create-post'/>">New post</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/settings'/>">Settings</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/profile'/>">Profile</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
                 <li>
-                  <div class="ms-sm-1 theme-icon-active">
+                  <div class="ms-sm-3 theme-icon-active">
                     <input type="checkbox" class="checkbox" id="checkbox">
                     <label for="checkbox" class="checkbox-label">
                       <i  class="nav-link text-primary-hover mb-0 active" data-bs-theme-value="light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Light">
@@ -89,10 +89,10 @@
           </c:if>
 
           <c:if test="${empty cookie.token}">
-            <a role"button" style="margin:5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Login</a>
+            <a role"button" style="margin:5px 10px 5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Login</a>
           </c:if>
 
-          <form>
+          <form class="m-2">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
           </form>
         </div>
