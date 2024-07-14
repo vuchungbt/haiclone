@@ -16,6 +16,9 @@
   <script src="<c:url value='/template/web/js/kit.42d5adcbca.js' />" ></script>
   <!-- Dark mode -->
   <script src="<c:url value='/template/web/js/theme.js' />"></script>
+  <!-- canvas -->
+  <script src="<c:url value='/template/canvas-editor/js/creator.js' />"></script>
+
 
   <style>
     textarea {
@@ -43,19 +46,20 @@
           <!-- Card START -->
           <div class="card card-body">
             <!-- Post input -->
-            <form class="w-100" action="">
-            <textarea  class="form-control pe-4 border-0" rows="1" maxlength="100" data-autoresize=""
-                            placeholder="Title..."></textarea>
-            <textarea maxlength="1200" class="form-control pe-4 border-0" rows="2" data-autoresize=""
-                placeholder="Content..."></textarea>
-                <div>
 
-                              <input type="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square"
-                                data-max-file-size="25M" data-max-height="3000" />
 
-                                <button type="submit" class="btn btn-sm btn-info" style="margin:5px; float:right" href="/login">Post</button>
-                            </div>
+
+            <form class="w-100">
+              <textarea maxlength="1000" class="form-control pe-4 border-0" rows="2" data-autoresize=""
+                placeholder="Share your thoughts..."></textarea>
             </form>
+
+
+
+            <div>
+              <input type="file" id="input-file-to-destroy" class="dropify"
+                data-max-file-size="25M" data-max-height="4000" />
+            </div>
 
 
             <!-- Share feed toolbar END -->
@@ -161,7 +165,52 @@
     </div>
     <!-- Container END -->
 
+
+
+
+
   </main>
+
+
+<!-- Modal create Feed photo START -->
+<div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<!-- Modal feed header START -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="feedActionPhotoLabel">Edit photo</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<!-- Modal feed header END -->
+
+				<!-- Modal feed body START -->
+				<div class="modal-body">
+
+
+				<div id="placeholder"></div>
+                <p><button id="resetTemplateButton">Reset template</button></p>
+
+                <div class="debug">
+                    <img id="preview" />
+                </div>
+
+
+				</div>
+				<!-- Modal feed body END -->
+
+				<!-- Modal feed footer -->
+				<div class="modal-footer ">
+					<!-- Button -->
+						<button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-success-soft">Done</button>
+				</div>
+				<!-- Modal feed footer -->
+		</div>
+	</div>
+</div>
+<!-- Modal create Feed photo END -->
+
+
 
   <%@ include file="/common/web/footer.jsp" %>
 
@@ -218,6 +267,9 @@
 			});
 		});
   </script>
+    <script>
+    	window.dataLayer = window.dataLayer || [];
+    </script>
 </body>
 
 </html>

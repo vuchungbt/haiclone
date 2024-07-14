@@ -14648,12 +14648,8 @@
         class Fa {
             static preload() {
                 const t = new Image;
-                t.src = "./assets/cat.jpg",
+                t.src = "/template/canvas-editor/2/cat.jpg",
                 t.onload = ()=>{
-                    const resource = document.getElementById("preview");
-                    if (resource) {
-                        t.src = resource.src;
-                    } else  t.src = "/template/canvas-editor/2/cat.jpg";
                     Fa.create(t)
                 }
             }
@@ -14669,11 +14665,9 @@
                         brushColor: "#ff0000",
                         brushSize: 20
                     },
-                    rect: {
-                        fillColor: "#ff0000"
-                    },
-                    image: !1,
-                    textbox: !1
+                    rect: !1,
+                    image: !0,
+                    textbox: !0
                 })
                   , n = new Fa(r,i,s);
                 return r.onChanged.subscribe(n.reloadPreview),
@@ -14747,6 +14741,7 @@
             [i, s]
         }
         document.addEventListener("DOMContentLoaded", Fa.preload, !1)
+
     }
     )()
 }
