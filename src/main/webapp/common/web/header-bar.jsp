@@ -1,10 +1,11 @@
 <!--menu-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Eighth navbar example">
       <div class="container">
-        <a class="navbar-brand" href="<c:url value='/home'/>">Meme World</a>
+        <a class="navbar-brand " href="<c:url value='/'/>">Meme World</a>
 
         <div>
-          <a href="<c:url value='/notifications'/>" class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
+          <a href="<c:url value='/notifications'/>" class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true">
+          </i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
                border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
             aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,16 +15,40 @@
         <div class="collapse navbar-collapse" id="navbarsExample07">
           <ul class="navbar-nav me-auto mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<c:url value='/home'/>">Home</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'home' or router == ''}">
+                            active
+                    </c:when>
+                </c:choose>
+                " aria-current="page" href="<c:url value='/'/>">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'trending' }">
+                            active
+                    </c:when>
+                </c:choose>
+                " href="/trending">Trending</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Top</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'top'  }">
+                            active
+                    </c:when>
+                </c:choose>
+                " href="/top">Top</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Ask</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'ask' }">
+                            active
+                    </c:when>
+                </c:choose>
+                " href="/ask">Ask</a>
             </li>
             <li class="nav-item">
               <a class="nav-link">Chat</a>

@@ -28,7 +28,6 @@ public class LoginController extends HttpServlet {
         String code = request.getParameter("code");
         String state = request.getParameter("state");
 
-
         String path="";
         if (code != null) {
             if (state != null) {
@@ -99,9 +98,11 @@ public class LoginController extends HttpServlet {
 //        cookie.setPath("/");
 //        cookie.setHttpOnly(true);
         response.addCookie(cookie);
+
         request.getSession().setAttribute("status", 200);
         request.getSession().setAttribute("name", userModel.getName());
         request.getSession().setAttribute("thumbnail",userModel.getThumbnail());
+
         response.sendRedirect(request.getContextPath() + "/home");
     }
     public void handleUserLogout(HttpServletRequest request, HttpServletResponse response)

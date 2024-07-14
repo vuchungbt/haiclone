@@ -1,4 +1,4 @@
-package com.vuchungbt.controller.web;
+package com.vuchungbt.controller.web.post;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,17 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/home","/like-post"},name = "home")
-public class HomeController extends HttpServlet {
+@WebServlet(urlPatterns = {"/editor-image-button"})
+public class CreatePostThenEditorController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/views/home.jsp");
-        rd.forward(request, response);
-    }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/views/home.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/create-post-then-editor.jsp");
         rd.forward(request, response);
     }
 }

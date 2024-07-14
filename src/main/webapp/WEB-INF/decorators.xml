@@ -6,6 +6,9 @@
     </decorator>
     <decorator name ="web" page ="web.jsp">
         <pattern>/home</pattern>
+        <pattern>/top</pattern>
+        <pattern>/trending</pattern>
+        <pattern>/ask</pattern>
     </decorator>
 
 

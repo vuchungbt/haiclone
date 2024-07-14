@@ -30,6 +30,10 @@ public class AuthorizationFilter implements Filter {
 
         String url = request.getRequestURI();
         Cookie[]cookies = request.getCookies();
+
+        // add router for active menu
+        handleUri(url,request);
+
         Cookie tokenCookie = null;
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -56,10 +60,24 @@ public class AuthorizationFilter implements Filter {
             handleNoToken(url,request,response,filterChain);
         }
     }
+    private void getInfoFromToken(String token) {
+        //
+        //return info User role , uri
+        //
+    }
+    private void handleUri(String url, HttpServletRequest request){
+        String[] uri = url.split("/");
+        String link = "";
+        if(uri.length>1){
+            link=uri[1];
+        }
+        request.setAttribute("router", link);
+    }
     private void handleValidToken(String token, String url, HttpServletRequest request,HttpServletResponse response,FilterChain filterChain)
             throws ServletException, IOException {
+
         String roleCode = null;
-//        Long roleID = userService.getRoleIDByRoleCode(IConstant.USER);
+//      Long roleID = userService.getRoleIDByRoleCode(IConstant.USER);
         if(url.startsWith("/login")){
             //
             String path = "";

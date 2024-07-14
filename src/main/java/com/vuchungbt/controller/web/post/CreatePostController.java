@@ -1,5 +1,8 @@
-package com.vuchungbt.controller.web;
+package com.vuchungbt.controller.web.post;
 
+import com.vuchungbt.service.IPostService;
+
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/editor-image-button2"})
-public class CreatePostThenEditorController2 extends HttpServlet {
+@WebServlet(urlPatterns = {"/create-post"})
+public class CreatePostController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    @Inject
+    private IPostService postService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/views/web/create-post-then-editor3.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/create-post.jsp");
         rd.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
     }
 }
