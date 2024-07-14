@@ -66,7 +66,7 @@ CREATE TABLE `comments`(
   `level` int NOT NULL DEFAULT 0,
   for_post bigint NOT NULL,
   CONSTRAINT pk_comment_post FOREIGN KEY (for_post) REFERENCES posts(id),
-  parent_comment_id INT DEFAULT 1
+  parent_comment_id bigint NULL
 );
 CREATE TABLE `tabs`(
   id bigint NOT NULL PRIMARY KEY auto_increment,
@@ -85,6 +85,16 @@ CREATE TABLE `post_has_tab`(
     CONSTRAINT pk_post_id FOREIGN KEY (post_id) REFERENCES posts(id),
     tab_id bigint NOT NULL,
     CONSTRAINT pk_tab_id FOREIGN KEY (tab_id) REFERENCES tabs(id),
-    created_date TIMESTAMP NULL,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     status int NOT NULL DEFAULT 0
+);
+CREATE TABLE `post_has_votes`(
+    post_id bigint NOT NULL,
+    CONSTRAINT pk_post_id FOREIGN KEY (post_id) REFERENCES posts(id),
+    user_id bigint NOT NULL,
+    CONSTRAINT pk_user_id FOREIGN KEY (user_id) REFERENCES users(id),
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    vote int NOT NULL DEFAULT 0
 );

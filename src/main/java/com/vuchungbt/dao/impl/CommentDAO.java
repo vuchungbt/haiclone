@@ -65,4 +65,35 @@ public class CommentDAO extends AbstractDAO<CommentModel> implements ICommentDAO
         sql+=" LIMIT "+ record + " OFFSET " + (page-1)*record ;
         return query(sql, new CommentMapper(), idPost);
     }
+
+    @Override
+    public List<CommentModel> findByPostIDAndFirstLevel(Long idPost) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM comments");
+        sql.append(" WHERE forPost = ?");
+        sql.append(" and `level` = 0");
+        return query(sql.toString(), new CommentMapper(), idPost);
+    }
+
+    @Override
+    public List<CommentModel> findByPostIDAndFirstLevel(Long idPost, int page) {
+        int record = 5;
+        String sql = "SELECT * FROM comments WHERE for_post = ? and `level`=0";
+        sql+=" LIMIT "+ record + " OFFSET " + (page-1)*record ;
+        return query(sql, new CommentMapper(), idPost);
+    }
+
+    @Override
+    public List<CommentModel> findByParentID(Long idParent) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM comments");
+        sql.append(" WHERE parent_comment_id = ?");
+        return query(sql.toString(), new CommentMapper(), idParent);
+    }
+
+    @Override
+    public List<CommentModel> findByParentID(Long idParent, int page) {
+        int record = 5;
+        String sql = "SELECT * FROM comments WHERE parent_comment_id = ?";
+        sql+=" LIMIT "+ record + " OFFSET " + (page-1)*record ;
+        return query(sql, new CommentMapper(), idParent);
+    }
 }

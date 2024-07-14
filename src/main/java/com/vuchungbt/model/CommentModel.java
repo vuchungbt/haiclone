@@ -3,7 +3,15 @@ package com.vuchungbt.model;
 public class CommentModel extends AbstractModel{
     private String content;
     private int level;
-    private Long forPost;
+    private Long forPost,parentId;
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
 
     public Long getForPost() {
         return forPost;
