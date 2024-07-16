@@ -1,6 +1,5 @@
-package com.vuchungbt.controller.web;
+package com.vuchungbt.controller.test;
 
-import com.vuchungbt.service.ImageService;
 import com.vuchungbt.service.impl.ImageServiceImpl;
 
 import javax.inject.Inject;

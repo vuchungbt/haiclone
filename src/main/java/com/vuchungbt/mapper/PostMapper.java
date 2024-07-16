@@ -12,6 +12,7 @@ public class PostMapper implements RowMapper<PostModel> {
         try {
             postModel.setId(rs.getLong("id"));
             postModel.setSource(rs.getString("source"));
+            postModel.setSourceName(rs.getString("source_name"));
             postModel.setRefer(rs.getString("refer"));
             postModel.setCreatedBy(rs.getString("created_by"));
             postModel.setCreatedDate(rs.getTimestamp("created_date"));
@@ -21,10 +22,15 @@ public class PostMapper implements RowMapper<PostModel> {
             postModel.setThumbnail(rs.getString("thumbnail"));
             postModel.setTitle(rs.getString("title"));
             postModel.setType(rs.getString("type"));
+            postModel.setContent(rs.getString("content"));
             postModel.setModifiedBy(rs.getString("updated_by"));
             postModel.setModifiedDate(rs.getTimestamp("updated_date"));
+            postModel.setAvgVote(rs.getDouble("avg_vote"));
+            postModel.setVoteCount(rs.getInt("vote_count"));
+            postModel.setAuthId(rs.getLong("auth_id"));
         }
         catch (SQLException e) {
+            System.out.println("PostMapper result null");
             return null;
         }
         return postModel;

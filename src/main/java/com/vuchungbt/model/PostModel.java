@@ -6,9 +6,55 @@ import java.util.List;
 
 public class PostModel extends AbstractModel {
     private List<String> tab = new ArrayList<>();
-    private String source,refer,shortdescription,content;
+    private String source,refer,shortdescription,content,sourceName;
     private Timestamp publishDate,verifiedDate ;
     private Long authId;
+    private double avgVote;
+    private int voteCount;
+
+
+    private UserModel created;
+    private List<CommentModel> comments ;
+
+    public List<CommentModel> getComments() {
+        return comments;
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public void setComments(List<CommentModel> comments) {
+        this.comments = comments;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
+    }
+
+    public UserModel getCreated() {
+        return created;
+    }
+
+    public void setCreated(UserModel created) {
+        this.created = created;
+    }
+
+    public double getAvgVote() {
+        return avgVote;
+    }
+
+    public void setAvgVote(double avgVote) {
+        this.avgVote = avgVote;
+    }
 
     public String getShortdescription() {
         return shortdescription;

@@ -1,5 +1,6 @@
 <!--menu-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Eighth navbar example">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
       <div class="container">
         <a class="navbar-brand " href="<c:url value='/'/>">Meme World</a>
 
@@ -21,7 +22,7 @@
                             active
                     </c:when>
                 </c:choose>
-                " aria-current="page" href="<c:url value='/'/>">Home</a>
+                " aria-current="page" href="<c:url value='/'/>">Trang chủ</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
@@ -30,7 +31,7 @@
                             active
                     </c:when>
                 </c:choose>
-                " href="/trending">Trending</a>
+                " href="/trending">Xu hướng</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
@@ -39,7 +40,7 @@
                             active
                     </c:when>
                 </c:choose>
-                " href="/top">Top</a>
+                " href="/top">Phổ biến</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
@@ -48,10 +49,10 @@
                             active
                     </c:when>
                 </c:choose>
-                " href="/ask">Ask</a>
+                " href="/ask">Câu hỏi</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Chat</a>
+              <a class="nav-link">Chat với người lạ</a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
@@ -78,9 +79,9 @@
 
               </a>
               <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="<c:url value='/create-post'/>">New post</a></li>
-                <li><a class="dropdown-item" href="<c:url value='/settings'/>">Settings</a></li>
-                <li><a class="dropdown-item" href="<c:url value='/profile'/>">Profile</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/create-post'/>">Viết bài</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/settings'/>">Cài đặt</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/profile'/>">Trang cá nhân</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
@@ -108,17 +109,17 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href='<c:url value="/logout?action=logout"/> '>Sign out</a></li>
+                <li><a class="dropdown-item" href='<c:url value="/logout?action=logout"/> '>Thoát</a></li>
               </ul>
             </div>
           </c:if>
 
           <c:if test="${empty cookie.token}">
-            <a role"button" style="margin:5px 10px 5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Login</a>
+            <a role"button" style="margin:5px 10px 5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Đăng nhập</a>
           </c:if>
 
           <form class="m-2">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control" type="text" placeholder="Tìm kiếm" aria-label="Search">
           </form>
         </div>
       </div>

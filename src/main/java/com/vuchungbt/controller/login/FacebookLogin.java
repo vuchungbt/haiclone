@@ -47,6 +47,7 @@ public class FacebookLogin {
             JsonObject picObject = object.getAsJsonObject("picture")
                     .getAsJsonObject("data");
             fbAccount.setThumbnail(picObject.get("url").getAsString());
+            fbAccount.setAvatar(picObject.get("url").getAsString());
         }
         return fbAccount;
     }

@@ -56,6 +56,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+            System.out.println("Query:"+sql);
             connection = getConnection();
             statement = connection.prepareStatement(StringEscapeUtils.escapeHtml4(sql));
             setParameter(statement, param);
@@ -65,7 +66,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             }
             return results;
         } catch (SQLException e) {
-            System.out.println("ResultSet UserModel error:" + e.getMessage());
+            System.out.println("ResultSet error:" + e.getMessage());
             return null;
             //throw new RuntimeException(e);
 

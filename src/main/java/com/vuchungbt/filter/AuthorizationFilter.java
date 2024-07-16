@@ -5,6 +5,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.vuchungbt.constant.IConstant;
 import com.vuchungbt.service.IUserService;
 import com.vuchungbt.utils.JWTUtil;
+import com.vuchungbt.utils.RouterUtil;
 
 import javax.inject.Inject;
 import javax.servlet.*;
@@ -66,11 +67,7 @@ public class AuthorizationFilter implements Filter {
         //
     }
     private void handleUri(String url, HttpServletRequest request){
-        String[] uri = url.split("/");
-        String link = "";
-        if(uri.length>1){
-            link=uri[1];
-        }
+        String link = RouterUtil.getRouter(1,request);
         request.setAttribute("router", link);
     }
     private void handleValidToken(String token, String url, HttpServletRequest request,HttpServletResponse response,FilterChain filterChain)

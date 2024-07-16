@@ -11,5 +11,8 @@ public interface ICommentService {
     CommentModel findByID(Long id);
     List<CommentModel> findByPostID(Long idPost);
     List<CommentModel> findByPostID(Long idPost, int page);
-
+    List<CommentModel> findByPostIDAndFirstLevel(Long idPost);
+    List<CommentModel> findByPostIDAndFirstLevel(Long idPost, int page);
+    List<CommentModel> findByParentID(Long idParent);
+    List<CommentModel> findByParentID(Long idParent, int page);
 }
