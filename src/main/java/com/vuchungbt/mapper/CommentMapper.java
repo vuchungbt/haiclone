@@ -22,9 +22,13 @@ public class CommentMapper implements RowMapper<CommentModel>{
             commentModel.setModifiedBy(rs.getString("updated_by"));
             commentModel.setModifiedDate(rs.getTimestamp("updated_date"));
             commentModel.setLevel(rs.getInt("level"));
+            commentModel.setContent(rs.getString("content"));
             commentModel.setForPost(rs.getLong("for_post"));
+            commentModel.setAuthId(rs.getLong("auth_id"));
+            commentModel.setVoteCount(rs.getInt("vote_count"));
         }
         catch (SQLException e) {
+            System.out.println("CommentMapper: "+e.getMessage());
             return null;
         }
         return commentModel;

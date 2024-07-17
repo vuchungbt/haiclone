@@ -12,4 +12,6 @@ public interface IPostService {
     int count();
     List<PostModel> findAll();
     List<PostModel> findAll(int page);
+    List<PostModel> findTop(int page);
+    List<PostModel> findTrending(int page);
 }

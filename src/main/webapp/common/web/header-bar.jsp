@@ -1,10 +1,12 @@
 <!--menu-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Eighth navbar example">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
       <div class="container">
-        <a class="navbar-brand" href="<c:url value='/home'/>">Meme World</a>
+        <a class="navbar-brand " href="<c:url value='/'/>">Meme World</a>
 
         <div>
-          <a class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
+          <a href="<c:url value='/notifications'/>" class="position-relative mx-2"><i class="fa fa-envelope-o fa-lg" aria-hidden="true">
+          </i><span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border
                border-light rounded-circle"><span class="visually-hidden">New alerts</span></span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07"
             aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,19 +16,43 @@
         <div class="collapse navbar-collapse" id="navbarsExample07">
           <ul class="navbar-nav me-auto mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<c:url value='/home'/>">Home</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'home' or router == ''}">
+                            active
+                    </c:when>
+                </c:choose>
+                " aria-current="page" href="<c:url value='/'/>">Trang chủ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Trending</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'trending' }">
+                            active
+                    </c:when>
+                </c:choose>
+                " href="/trending">Xu hướng</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Top</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'top'  }">
+                            active
+                    </c:when>
+                </c:choose>
+                " href="/top">Phổ biến</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Ask</a>
+              <a class="nav-link
+                <c:choose>
+                    <c:when test="${router == 'ask' }">
+                            active
+                    </c:when>
+                </c:choose>
+                " href="/ask">Câu hỏi</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Chat</a>
+              <a class="nav-link">Chat với người lạ</a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown"
@@ -41,7 +67,7 @@
 
           </ul>
           <c:if test="${not empty cookie.token}">
-            <div class="dropdown mx-2">
+            <div class="dropdown border-bottom-menu">
               <a href="#" class="d-blockdropdown-toggle" data-bs-toggle="dropdown"
                  aria-expanded="false">
                 <c:if test="${not empty thumbnail}">
@@ -53,14 +79,14 @@
 
               </a>
               <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="<c:url value='/create-post'/>">New post</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/create-post'/>">Viết bài</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/settings'/>">Cài đặt</a></li>
+                <li><a class="dropdown-item" href="<c:url value='/profile'/>">Trang cá nhân</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
                 <li>
-                  <div class="ms-sm-1 theme-icon-active">
+                  <div class="ms-sm-3 theme-icon-active">
                     <input type="checkbox" class="checkbox" id="checkbox">
                     <label for="checkbox" class="checkbox-label">
                       <i  class="nav-link text-primary-hover mb-0 active" data-bs-theme-value="light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Light">
@@ -83,17 +109,17 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href='<c:url value="/logout?action=logout"/> '>Sign out</a></li>
+                <li><a class="dropdown-item" href='<c:url value="/logout?action=logout"/> '>Thoát</a></li>
               </ul>
             </div>
           </c:if>
 
           <c:if test="${empty cookie.token}">
-            <a role"button" style="margin:5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Login</a>
+            <a role"button" style="margin:5px 10px 5px 25px;" class="login-link btn btn-sm btn-info" href='<c:url value="/login" />'>Đăng nhập</a>
           </c:if>
 
-          <form>
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          <form class="m-2">
+            <input class="form-control" type="text" placeholder="Tìm kiếm" aria-label="Search">
           </form>
         </div>
       </div>

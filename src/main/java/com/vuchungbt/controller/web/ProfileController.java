@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/create-post"})
-public class CreatePostController extends HttpServlet {
+@WebServlet(urlPatterns = {"/profile"})
+public class ProfileController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,6 +35,7 @@ public class CreatePostController extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/login");
         }
 
-
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/profile.jsp");
+        rd.forward(request, response);
     }
 }

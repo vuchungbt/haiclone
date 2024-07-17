@@ -5,6 +5,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.vuchungbt.constant.IConstant;
 import com.vuchungbt.service.IUserService;
 import com.vuchungbt.utils.JWTUtil;
+import com.vuchungbt.utils.RouterUtil;
 
 import javax.inject.Inject;
 import javax.servlet.*;
@@ -30,6 +31,10 @@ public class AuthorizationFilter implements Filter {
 
         String url = request.getRequestURI();
         Cookie[]cookies = request.getCookies();
+
+        // add router for active menu
+        handleUri(url,request);
+
         Cookie tokenCookie = null;
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -56,10 +61,20 @@ public class AuthorizationFilter implements Filter {
             handleNoToken(url,request,response,filterChain);
         }
     }
+    private void getInfoFromToken(String token) {
+        //
+        //return info User role , uri
+        //
+    }
+    private void handleUri(String url, HttpServletRequest request){
+        String link = RouterUtil.getRouter(1,request);
+        request.setAttribute("router", link);
+    }
     private void handleValidToken(String token, String url, HttpServletRequest request,HttpServletResponse response,FilterChain filterChain)
             throws ServletException, IOException {
+
         String roleCode = null;
-//        Long roleID = userService.getRoleIDByRoleCode(IConstant.USER);
+//      Long roleID = userService.getRoleIDByRoleCode(IConstant.USER);
         if(url.startsWith("/login")){
             //
             String path = "";

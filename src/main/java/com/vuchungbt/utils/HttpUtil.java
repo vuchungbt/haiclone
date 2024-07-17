@@ -1,7 +1,6 @@
 package com.vuchungbt.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.BufferedReader;
 
 public class HttpUtil {
@@ -11,6 +10,7 @@ public class HttpUtil {
     public <T> T toModel (Class<T> tClass){
         try{
             return new ObjectMapper().readValue(value, tClass);
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
